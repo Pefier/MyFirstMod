@@ -3,11 +3,9 @@ package com.pefier.MyFirstMod.client.entityrender;
 
 import com.pefier.MyFirstMod.Mob.EntityRedPanda;
 import com.pefier.MyFirstMod.reference.Reference;
-
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
-
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
