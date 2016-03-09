@@ -20,6 +20,7 @@ public class ModItems {
     public static void preinit(){
         bambus = new ItemBambus();
         pandaMeat = new ItemPandaMeat();
+
     }
 
     public static void init(){

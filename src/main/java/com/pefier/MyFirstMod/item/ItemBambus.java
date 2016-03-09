@@ -15,7 +15,7 @@ public class ItemBambus extends Item {
 
         GameRegistry.registerItem( this , name);
         setUnlocalizedName(Reference.MOD_ID + ":" + name);
-
+        setMaxStackSize(64);
     }
 
     public String getName(){
