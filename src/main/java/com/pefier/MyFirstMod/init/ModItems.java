@@ -36,10 +36,10 @@ public class ModItems {
         //Armor Items
         ItemArmor.ArmorMaterial Useless = EnumHelper.addArmorMaterial("useless","", 0, new int[]{0, 0, 0, 0}, 0);
 
-        flash_helm =new ItemFlashHelm(Useless,1,0);
-        flash_chest = new ItemFlashBody(Useless, 1, 1);
-        flash_legs = new ItemFlashLegs(Useless, 1, 2);
-        flash_boots = new ItemFlashBoots(Useless, 1, 3);
+        flash_helm =new ItemFlashHelm(Useless,3,0);
+        flash_chest = new ItemFlashBody(Useless, 3, 1);
+        flash_legs = new ItemFlashLegs(Useless, 3, 2);
+        flash_boots = new ItemFlashBoots(Useless, 3, 3);
 
 
     }

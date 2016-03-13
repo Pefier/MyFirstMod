@@ -4,6 +4,10 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.texture.Stitcher;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.ItemStack;
 
 /**
  * Created by New Profile on 13.03.2016.
@@ -33,12 +37,14 @@ public class ModelFlashArmor extends ModelBiped {
         head.setTextureSize(64, 64);
         head.mirror = true;
         setRotation(head, 0F, 0F, 0F);
+
         body = new ModelRenderer(this, 16, 16);
         body.addBox(-4F, 0F, -2F, 8, 12, 4);
         body.setRotationPoint(0F, 0F, 0F);
         body.setTextureSize(64, 64);
         body.mirror = true;
         setRotation(body, 0F, 0F, 0F);
+
         rightarm = new ModelRenderer(this, 40, 16);
         rightarm.addBox(-3F, -2F, -2F, 4, 12, 4);
         rightarm.setRotationPoint(-5F, 2F, 0F);
@@ -51,6 +57,7 @@ public class ModelFlashArmor extends ModelBiped {
         leftarm.setTextureSize(64, 64);
         leftarm.mirror = true;
         setRotation(leftarm, 0F, 0F, 0F);
+
         rightleg = new ModelRenderer(this, 0, 16);
         rightleg.addBox(-2F, 0F, -2F, 4, 12, 4);
         rightleg.setRotationPoint(-2F, 12F, 0F);
@@ -70,7 +77,6 @@ public class ModelFlashArmor extends ModelBiped {
         EarLeft1.setTextureSize(64, 64);
         EarLeft1.mirror = true;
         setRotation(EarLeft1, 0F, 0F, 0F);
-
         EarRight1 = new ModelRenderer(this, 0, 0);
         EarRight1.addBox(-6F, -5F, 0F, 1, 1, 2);
         EarRight1.setRotationPoint(0F, 0F, 0F);
@@ -92,9 +98,8 @@ public class ModelFlashArmor extends ModelBiped {
 
         EarLeft1.addChild(EarLeft2);
         EarRight1.addChild(EarRight2);
-        this.bipedHead.addChild(EarLeft1);
-        this.bipedHead.addChild(EarRight1);
-
+        head.addChild(EarLeft1);
+        head.addChild(EarRight1);
 
     }
 
@@ -106,12 +111,16 @@ public class ModelFlashArmor extends ModelBiped {
 
     }
 
+
+
     private void setRotation(ModelRenderer model, float x, float y, float z)
     {
         model.rotateAngleX = x;
         model.rotateAngleY = y;
         model.rotateAngleZ = z;
     }
+
+
 
 
 

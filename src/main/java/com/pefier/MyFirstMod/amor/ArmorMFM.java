@@ -43,9 +43,10 @@ public class ArmorMFM extends ItemArmor {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemstack, int armorSlot) {    //line 900 Item.java
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemstack, int armorSlot , ModelBiped _default) {
 
         ModelFlashArmor armorModel = (ModelFlashArmor) ClientProxy.armorModels.get(this);
+        armorModel.setModelAttributes(_default);
 
         if (armorModel != null) {
 
@@ -57,49 +58,16 @@ public class ArmorMFM extends ItemArmor {
             armorModel.bipedRightLeg.showModel = armorSlot == 2 || armorSlot == 3;
             armorModel.bipedLeftLeg.showModel = armorSlot == 2 || armorSlot == 3;
 
-
-            armorModel.isSneak = entityLiving.isSneaking();
-            armorModel.isRiding = entityLiving.isRiding();
-            armorModel.isChild = entityLiving.isChild();
-
-            armorModel.heldItemRight = 0;
-            armorModel.aimedBow = false;
-
-            EntityPlayer player = (EntityPlayer) entityLiving;
-
-            ItemStack held_item = player.getEquipmentInSlot(0);
-
-            if (held_item != null) {
-                armorModel.heldItemRight = 1;
-
-                if (player.getItemInUseCount() > 0) {
-
-                    EnumAction enumaction = held_item.getItemUseAction();
-
-                    if (enumaction == EnumAction.BOW) {
-                        armorModel.aimedBow = true;
-                    } else if (enumaction == EnumAction.BLOCK) {
-                        armorModel.heldItemRight = 3;
-                    }
-
-
-                }
-
-            }
-
-
         }
-
-
         return armorModel;
     }
 
-
     @Override
-    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer) { //line 860 item.java
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String layer) {
 
         String name = this.getUnwrappedUnlocalizedName(super.getUnlocalizedName());
         name = name.substring(0, name.indexOf('_'));
         return String.format("%s:textures/models/%s_layer_%d.png", Reference.MOD_ID.toLowerCase(), name, slot == 2 ? 2 : 1);
     }
+
 }
