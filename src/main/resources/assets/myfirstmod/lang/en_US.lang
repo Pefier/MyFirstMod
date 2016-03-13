@@ -1,2 +1,8 @@
-item.MyFirstMod:Bambus.name=Bamboo
-item.MyFirstMod:PandaMeat.name=Panda Meat
+item.myfirstmod:Bambus.name=Bamboo
+item.myfirstmod:PandaMeat.name=Panda Meat
+item.myfirstmod:RingFlash.name=Power Ring The Flash
+item.myfirstmod:RingCold.name=Power Ring Captian Cold
+item.myfirstmod:FlashArmor_boots.name=Flash Boots
+item.myfirstmod:FlashArmor_helm.name=Flash Cap
+item.myfirstmod:FlashArmor_body.name=Flash Chest
+item.myfirstmod:FlashArmor_legs.name=Flash Legs
