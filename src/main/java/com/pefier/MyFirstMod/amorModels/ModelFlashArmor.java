@@ -98,8 +98,8 @@ public class ModelFlashArmor extends ModelBiped {
 
         EarLeft1.addChild(EarLeft2);
         EarRight1.addChild(EarRight2);
-        head.addChild(EarLeft1);
-        head.addChild(EarRight1);
+        this.bipedHead.addChild(EarLeft1);
+        this.bipedHead.addChild(EarRight1);
 
     }
 

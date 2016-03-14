@@ -12,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.ItemArmor;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -39,7 +40,7 @@ public class MyFirstMod {
     public void preInit(FMLPreInitializationEvent e){
 
         ConfigurationHandler.init(e.getSuggestedConfigurationFile());
-        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+        MinecraftForge.EVENT_BUS.register(new ConfigurationHandler());
         ModItems.preinit();
         ModEntitys.init();
 

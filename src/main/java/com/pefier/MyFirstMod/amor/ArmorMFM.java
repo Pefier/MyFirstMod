@@ -45,7 +45,7 @@ public class ArmorMFM extends ItemArmor {
     @SideOnly(Side.CLIENT)
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemstack, int armorSlot , ModelBiped _default) {
 
-        ModelFlashArmor armorModel = (ModelFlashArmor) ClientProxy.armorModels.get(this);
+        ModelBiped armorModel =  ClientProxy.armorModels.get(this);
         armorModel.setModelAttributes(_default);
 
         if (armorModel != null) {
