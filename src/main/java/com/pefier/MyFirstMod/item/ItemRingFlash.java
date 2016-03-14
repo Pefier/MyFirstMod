@@ -37,7 +37,7 @@ public class ItemRingFlash extends ItemMFM {
     public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
         if (itemStackIn.getTagCompound()==null){
             NBTTagCompound data = new NBTTagCompound();
-            data.setBoolean(TAG_STATUS, false);
+            data.setBoolean(TAG_STATUS, true);
             itemStackIn.setTagInfo(TAG_FLASH,data);
             System.out.println("Initializing tag");
         }
@@ -50,26 +50,48 @@ public class ItemRingFlash extends ItemMFM {
             playerIn.inventory.addItemStackToInventory(playerIn.getEquipmentInSlot(3));
             playerIn.inventory.addItemStackToInventory(playerIn.getEquipmentInSlot(4));
 
-            playerIn.setCurrentItemOrArmor(2,new ItemStack(ModItems.flash_legs));
+
             playerIn.setCurrentItemOrArmor(1,new ItemStack(ModItems.flash_boots));
+            playerIn.setCurrentItemOrArmor(2,new ItemStack(ModItems.flash_legs));
             playerIn.setCurrentItemOrArmor(3,new ItemStack(ModItems.flash_chest));
             playerIn.setCurrentItemOrArmor(4,new ItemStack(ModItems.flash_helm));
             //to do making the player stop from acessing armor solts.
+
+
+
             Double a = playerIn.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getBaseValue();
             System.out.println("if Aktuell MovementSpeed" + a);
             NBTHelper.setNBTTagBoolean(itemStackIn,TAG_STATUS,TAG_FLASH,false);
-        }else{
+        }else {
+            int x = playerIn.inventory.clearMatchingItems(ModItems.flash_boots,-1,-1,null);
+            x += playerIn.inventory.clearMatchingItems(ModItems.flash_legs,-1,-1,null);
+            x += playerIn.inventory.clearMatchingItems(ModItems.flash_chest,-1,-1,null);
+            x += playerIn.inventory.clearMatchingItems(ModItems.flash_helm,-1,-1,null);
+            if (x==4)
+                NBTHelper.setNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_FLASH, true);
 
-
-            playerIn.setCurrentItemOrArmor(1,null);
-            playerIn.setCurrentItemOrArmor(2,null);
-            playerIn.setCurrentItemOrArmor(3,null);
-            playerIn.setCurrentItemOrArmor(4,null);
             Double a = playerIn.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getBaseValue();
             System.out.println("else Aktuell MovementSpeed" + a);
-            NBTHelper.setNBTTagBoolean(itemStackIn,TAG_STATUS,TAG_FLASH, true);
+
 
         }
         return super.onItemRightClick(itemStackIn, worldIn, playerIn);
+    }
+
+    private void clearArmorSlots(EntityPlayer playerIn,ItemStack itemStackIn){
+        if (playerIn.getCurrentArmor(0) != null && playerIn.getCurrentArmor(1) != null && playerIn.getCurrentArmor(2) != null && playerIn.getCurrentArmor(3) != null){
+            if (playerIn.getCurrentArmor(0).getItem() == ModItems.flash_boots
+                    && playerIn.getCurrentArmor(2).getItem() == ModItems.flash_chest
+                    && playerIn.getCurrentArmor(3).getItem() == ModItems.flash_helm
+                    && playerIn.getCurrentArmor(1).getItem() == ModItems.flash_legs) {
+
+                playerIn.setCurrentItemOrArmor(1, null);
+                playerIn.setCurrentItemOrArmor(2, null);
+                playerIn.setCurrentItemOrArmor(3, null);
+                playerIn.setCurrentItemOrArmor(4, null);
+                NBTHelper.setNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_FLASH, true);
+            }
+        }
+
     }
 }
