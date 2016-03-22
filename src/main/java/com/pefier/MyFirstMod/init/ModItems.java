@@ -24,7 +24,10 @@ public class ModItems {
     public static Item flash_chest;
     public static Item flash_legs;
     public static Item flash_boots;
-
+    public static Item greenlantern_helm;
+    public static Item greenlantern_chest;
+    public static Item greenlantern_legs;
+    public static Item greenlantern_boots;
 
     public static void preinit(){
 
@@ -34,28 +37,17 @@ public class ModItems {
         ringFlash = new ItemRingFlash();
         ringCold = new ItemRingCold();
         //Armor Items
-        ItemArmor.ArmorMaterial Useless = EnumHelper.addArmorMaterial("useless","", 0, new int[]{0, 0, 0, 0}, 0);
+        ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0);
 
-        flash_helm =new ItemFlashHelm(Useless,3,0);
-        flash_chest = new ItemFlashBody(Useless, 3, 1);
-        flash_legs = new ItemFlashLegs(Useless, 3, 2);
-        flash_boots = new ItemFlashBoots(Useless, 3, 3);
+        flash_helm =new ItemFlashHelm(Hero,3,0);
+        flash_chest = new ItemFlashBody(Hero, 3, 1);
+        flash_legs = new ItemFlashLegs(Hero, 3, 2);
+        flash_boots = new ItemFlashBoots(Hero, 3, 3);
 
-
-    }
-
-    public static void init(){
-        //initializing item rendering
-        RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
-
-        renderItem.getItemModelMesher().register(bambus , 0, new ModelResourceLocation(Reference.MOD_ID + ":" + ((ItemBambus) bambus).getName(), "inventory"));
-        renderItem.getItemModelMesher().register(pandaMeat , 0, new ModelResourceLocation(Reference.MOD_ID + ":" + ((ItemPandaMeat) pandaMeat).getName(), "inventory"));
-        renderItem.getItemModelMesher().register(ringFlash , 0, new ModelResourceLocation(Reference.MOD_ID + ":" + ((ItemRingFlash) ringFlash).getName(), "inventory"));
-        renderItem.getItemModelMesher().register(ringCold , 0, new ModelResourceLocation(Reference.MOD_ID + ":" + ((ItemRingCold) ringCold).getName(), "inventory"));
-
-
-
-
+        greenlantern_helm = new ItemGreenLanternHelm(Hero, 3,0);
+        greenlantern_chest= new ItemGreenLanternBody(Hero,3,1);
+        greenlantern_legs= new ItemGreenLanternLegs(Hero,3,2);
+        greenlantern_boots= new ItemGreenLanternBoots(Hero,3,3);
 
 
     }

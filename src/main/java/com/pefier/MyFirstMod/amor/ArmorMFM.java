@@ -1,14 +1,12 @@
 package com.pefier.MyFirstMod.amor;
 
-import com.pefier.MyFirstMod.amorModels.ModelFlashArmor;
+
 import com.pefier.MyFirstMod.creativtab.CreativeTabMFM;
 import com.pefier.MyFirstMod.proxy.ClientProxy;
 import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;

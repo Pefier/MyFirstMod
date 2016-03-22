@@ -11,7 +11,7 @@ public class ItemBambus extends ItemMFM {
     private final String name = "Bambus";
 
     public ItemBambus(){
-
+        super();
         GameRegistry.registerItem( this , name);
         setUnlocalizedName(name);
         setMaxStackSize(64);

@@ -18,4 +18,5 @@ public class ItemFlashBody extends ArmorMFM {
     public String getName(){
         return name;
     }
+
 }

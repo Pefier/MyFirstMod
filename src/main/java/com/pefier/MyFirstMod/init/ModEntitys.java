@@ -17,6 +17,6 @@ public class ModEntitys {
 
 
         EntityCreator.createEntity(EntityRedPanda.class, 1 , "RedPanda", EnumCreatureType.AMBIENT, 5,0,2, new BiomeGenBase[] {BiomeGenBase.birchForest,BiomeGenBase.beach});
-        RenderingRegistry.registerEntityRenderingHandler(EntityRedPanda.class, RenderRedPanda.FACTORY);
+
     }
 }

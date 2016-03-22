@@ -18,4 +18,24 @@ public class NBTHelper {
         NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
         data.setBoolean(tag, bool);
     }
+
+    public static void setNBTTagInt(ItemStack itemStack,String tag, String MasterTag, int wert){
+        NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+        data.setInteger(tag,wert);
+    }
+    public static int getNBTTagInt(ItemStack itemStack,String tag, String MasterTag){
+        NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+        return  data.getInteger(tag);
+    }
+    public static void setNBTTagDouble(ItemStack itemStack,String tag, String MasterTag, double wert){
+        NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+        data.setDouble(tag,wert);
+    }
+    public static double getNBTTagDouble(ItemStack itemStack,String tag, String MasterTag){
+        NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+        return  data.getDouble(tag);
+
+    }
+
+
 }

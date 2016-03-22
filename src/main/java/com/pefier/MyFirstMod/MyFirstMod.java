@@ -2,25 +2,17 @@ package com.pefier.MyFirstMod;
 
 import com.pefier.MyFirstMod.handler.ConfigurationHandler;
 import com.pefier.MyFirstMod.init.ModEntitys;
-import com.pefier.MyFirstMod.init.ModItems;
-import com.pefier.MyFirstMod.item.ItemBambus;
-import com.pefier.MyFirstMod.proxy.ClientProxy;
-import com.pefier.MyFirstMod.proxy.IProxy;
+import com.pefier.MyFirstMod.packets.NoClipMessage;
+import com.pefier.MyFirstMod.packets.NoClipHandler;
+import com.pefier.MyFirstMod.proxy.CommonProxy;
 import com.pefier.MyFirstMod.reference.Reference;
-import com.pefier.MyFirstMod.utility.LogHelper;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.item.ItemArmor;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 /**
@@ -33,32 +25,28 @@ public class MyFirstMod {
     public static MyFirstMod instance;
 
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS , serverSide = Reference.SERVER_PROXY_CLASS)
-    public static IProxy proxy;
-    public static ClientProxy clientProxy;
+
+    public static CommonProxy proxy;
+    public static SimpleNetworkWrapper network;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e){
-
+        proxy.preInit(e);
         ConfigurationHandler.init(e.getSuggestedConfigurationFile());
-        MinecraftForge.EVENT_BUS.register(new ConfigurationHandler());
-        ModItems.preinit();
         ModEntitys.init();
 
+        network= NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+        network.registerMessage(new NoClipHandler(),NoClipMessage.class,0,Side.SERVER);
 
     }
     @Mod.EventHandler
     public void init(FMLInitializationEvent e){
+        proxy.init(e);
 
-
-
-        if(e.getSide() == Side.CLIENT ) {
-            ModItems.init();
-        }
-        clientProxy.register_renderers();
     }
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e){
-
+        proxy.postInit(e);
 
     }
 

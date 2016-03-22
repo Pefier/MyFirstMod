@@ -18,9 +18,9 @@ public class ItemMFM extends Item {
     }
 
     @Override
-    public String getUnlocalizedName()
-    {
-        return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+        public String getUnlocalizedName()
+        {
+            return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
 
     @Override
@@ -28,12 +28,11 @@ public class ItemMFM extends Item {
     {
         return String.format("item.%s%s", Reference.MOD_ID.toLowerCase() + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
     }
+
+
     protected String getUnwrappedUnlocalizedName(String unlocalizedName)
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
-
-
-
 
 }

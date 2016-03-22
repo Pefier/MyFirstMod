@@ -13,7 +13,7 @@ public class ItemPandaMeat extends ItemMFM{
     public final String name = "PandaMeat";
 
     public ItemPandaMeat(){
-
+        super();
         GameRegistry.registerItem( this , name);
         setUnlocalizedName(name);
     }
