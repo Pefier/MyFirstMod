@@ -1,5 +1,6 @@
 package com.pefier.MyFirstMod;
 
+import com.pefier.MyFirstMod.client.gui.GuiHandler;
 import com.pefier.MyFirstMod.handler.ConfigurationHandler;
 import com.pefier.MyFirstMod.init.ModEntitys;
 import com.pefier.MyFirstMod.packets.NoClipMessage;
@@ -37,6 +38,7 @@ public class MyFirstMod {
 
         network= NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
         network.registerMessage(new NoClipHandler(),NoClipMessage.class,0,Side.SERVER);
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
 
     }
     @Mod.EventHandler

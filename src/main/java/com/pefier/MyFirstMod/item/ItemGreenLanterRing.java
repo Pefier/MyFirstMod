@@ -1,5 +1,10 @@
 package com.pefier.MyFirstMod.item;
 
+import com.pefier.MyFirstMod.utility.NBTHelper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -9,8 +14,8 @@ public class ItemGreenLanterRing extends ItemMFM {
 
     private static final String name = "GreenLanternRing";
 
-    private static final String TAG_FLASH = "tag_lantern";
-    private static final String TAG_STATUS ="tag_power";
+    private static final String TAG_LANTERN = "tag_lantern";
+    private static final String TAG_CHARGE ="tag_charge";
 
     public  ItemGreenLanterRing(){
         super();
@@ -25,5 +30,18 @@ public class ItemGreenLanterRing extends ItemMFM {
         return name;
     }
 
+    @Override
+    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+        if (itemStackIn.getTagCompound() == null) {
+            NBTTagCompound data = new NBTTagCompound();
+            data.setInteger(TAG_CHARGE, 0);
+            itemStackIn.setTagInfo(TAG_LANTERN, data);
+    }
+        System.out.print(NBTHelper.getNBTTagInt(itemStackIn,TAG_CHARGE,TAG_LANTERN));
+
+
+
+        return itemStackIn;
+    }
 
 }

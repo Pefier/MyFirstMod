@@ -10,4 +10,10 @@ public final class Name {
         public static final String AKTIVATE ="Keys.myfirstmod.aktivate";
 
     }
+    public static  final class GuiIDs{
+        public static final int GUI_CHARGER = 1;
+
+
+
+    }
 }

@@ -28,6 +28,7 @@ public class ModItems {
     public static Item greenlantern_chest;
     public static Item greenlantern_legs;
     public static Item greenlantern_boots;
+    public static Item ringGreenLantern;
 
     public static void preinit(){
 
@@ -36,6 +37,7 @@ public class ModItems {
         pandaMeat = new ItemPandaMeat();
         ringFlash = new ItemRingFlash();
         ringCold = new ItemRingCold();
+        ringGreenLantern = new ItemGreenLanterRing();
         //Armor Items
         ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0);
 
