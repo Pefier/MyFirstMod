@@ -1,6 +1,5 @@
 package com.pefier.MyFirstMod.packets;
 
-import com.google.common.util.concurrent.ListenableFuture;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
@@ -40,7 +39,7 @@ public class NoClipMessage implements IMessage {
     public static class Handler implements IMessageHandler<NoClipMessage, IMessage> {
 
         @Override
-        public NoClipMessage onMessage(NoClipMessage message, MessageContext ctx) {
+        public NoClipMessage onMessage(final NoClipMessage message, final MessageContext ctx) {
             IThreadListener mainThread = (WorldServer) ctx.getServerHandler().playerEntity.worldObj;
             mainThread.addScheduledTask(new Runnable() {
                 @Override
