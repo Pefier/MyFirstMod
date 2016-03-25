@@ -1,8 +1,14 @@
 package com.pefier.MyFirstMod.packets;
 
+import com.google.common.util.concurrent.ListenableFuture;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.IThreadListener;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -10,47 +16,48 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 /**
  * Created by New Profile on 18.03.2016.
  */
+
 public class NoClipMessage implements IMessage {
     private boolean noClip;
-   // public NoClipMessage(){
-      //  this.noClip = noClip;
-   // }
-    @Override
-    public void fromBytes(ByteBuf buf) {
-        //noClip = buf.readBoolean();
+
+
+        public NoClipMessage() { }
+        public NoClipMessage(boolean noClip){
+
+            this.noClip = noClip;
+        }
+        @Override
+        public void fromBytes(ByteBuf buf) {
+            noClip = buf.readBoolean();
+
     }
 
     @Override
     public void toBytes(ByteBuf buf) {
-       // buf.writeBoolean(noClip);
+        buf.writeBoolean(noClip);
+
     }
-    public boolean getnoClip(){
-        return this.noClip;
-      }
-
-
-
-
-
-
-
-
     public static class Handler implements IMessageHandler<NoClipMessage, IMessage> {
 
         @Override
-        public NoClipMessage onMessage(final NoClipMessage message, final MessageContext ctx) {
+        public NoClipMessage onMessage(NoClipMessage message, MessageContext ctx) {
             IThreadListener mainThread = (WorldServer) ctx.getServerHandler().playerEntity.worldObj;
             mainThread.addScheduledTask(new Runnable() {
                 @Override
                 public void run() {
-                    ctx.getServerHandler().playerEntity.noClip=true; //message.noClip;
-                    //System.out.printf("name is %sand noclip is%n" , ctx.getServerHandler().playerEntity.getName(), message.noClip);
-
+                    ctx.getServerHandler().playerEntity.noClip=message.noClip;
+                    System.out.println(String.format("Received noClip is : %n from %s", ctx.getServerHandler().playerEntity.noClip, ctx.getServerHandler().playerEntity.getDisplayName()));
                 }
             });
 
-
             return null;
+
+
+
+        }
+        public void handler(NoClipMessage message, MessageContext ctx){
+
+
         }
     }
 }

@@ -27,6 +27,7 @@ public class MyFirstMod {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS , serverSide = Reference.SERVER_PROXY_CLASS)
 
     public static CommonProxy proxy;
+
     public static SimpleNetworkWrapper network;
 
     @Mod.EventHandler
@@ -35,10 +36,14 @@ public class MyFirstMod {
         ConfigurationHandler.init(e.getSuggestedConfigurationFile());
         ModEntitys.init();
 
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
+
         network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
         network.registerMessage(NoClipMessage.Handler.class,NoClipMessage.class,0,Side.SERVER);
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
+
+
+
 
     }
     @Mod.EventHandler

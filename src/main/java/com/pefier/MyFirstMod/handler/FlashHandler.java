@@ -36,12 +36,12 @@ public class FlashHandler {
             return;
         }
         if(!Keybindings.aktivate.isKeyDown()){
-            ((EntityPlayer) event.entity).capabilities.allowFlying =false;
-            ((EntityPlayer) event.entity).capabilities.isFlying =false;
+
             return;
         }
 
-        MyFirstMod.network.sendToServer(new NoClipMessage());
+
+        MyFirstMod.network.sendToServer(new NoClipMessage(true));
         ((EntityPlayer) event.entity).capabilities.allowFlying =true;
         ((EntityPlayer) event.entity).capabilities.isFlying =true;
         event.entity.noClip = true;
