@@ -10,14 +10,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 /**
  * Created by New Profile on 21.03.2016.
  */
-public class ItemGreenLanterRing extends ItemMFM {
+public class ItemRingGreenLanter extends ItemMFM {
 
-    private static final String name = "GreenLanternRing";
+    private static final String name = "RingGreenLantern";
 
     private static final String TAG_LANTERN = "tag_lantern";
     private static final String TAG_CHARGE ="tag_charge";
 
-    public  ItemGreenLanterRing(){
+    public ItemRingGreenLanter(){
         super();
         setUnlocalizedName(name);
         setMaxStackSize(1);

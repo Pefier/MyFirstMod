@@ -4,7 +4,6 @@ import com.pefier.MyFirstMod.client.gui.GuiHandler;
 import com.pefier.MyFirstMod.handler.ConfigurationHandler;
 import com.pefier.MyFirstMod.init.ModEntitys;
 import com.pefier.MyFirstMod.packets.NoClipMessage;
-import com.pefier.MyFirstMod.packets.NoClipHandler;
 import com.pefier.MyFirstMod.proxy.CommonProxy;
 import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraftforge.fml.common.Mod;
@@ -36,8 +35,9 @@ public class MyFirstMod {
         ConfigurationHandler.init(e.getSuggestedConfigurationFile());
         ModEntitys.init();
 
-        network= NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
-        network.registerMessage(new NoClipHandler(),NoClipMessage.class,0,Side.SERVER);
+        network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.MOD_ID);
+        network.registerMessage(NoClipMessage.Handler.class,NoClipMessage.class,0,Side.SERVER);
+
         NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
 
     }

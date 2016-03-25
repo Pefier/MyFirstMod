@@ -1,15 +1,9 @@
 package com.pefier.MyFirstMod.init;
 
-import com.pefier.MyFirstMod.amor.ArmorMFM;
 import com.pefier.MyFirstMod.item.*;
-import com.pefier.MyFirstMod.reference.Reference;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by New Profile on 07.03.2016.
@@ -37,7 +31,7 @@ public class ModItems {
         pandaMeat = new ItemPandaMeat();
         ringFlash = new ItemRingFlash();
         ringCold = new ItemRingCold();
-        ringGreenLantern = new ItemGreenLanterRing();
+        ringGreenLantern = new ItemRingGreenLanter();
         //Armor Items
         ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0);
 
