@@ -15,13 +15,16 @@ public class ItemRenderRegister {
 
     public static void preInit() {
         ModelBakery.registerItemVariants(ModItems.ringFlash,new ModelResourceLocation(Reference.MOD_ID + ":RingFlash", "inventory"),new ModelResourceLocation(Reference.MOD_ID+ ":RingFlash1", "inventory"));
-
+        ModelBakery.registerItemVariants(ModItems.ringGreenLantern,new ModelResourceLocation(Reference.MOD_ID +":RingLantern0","inventory"),new ModelResourceLocation(Reference.MOD_ID +":RingLantern1","inventory"));
     }
 
     public static void registerItemRenderer() {
 
         reg(ModItems.ringFlash, 0, "RingFlash");
         reg(ModItems.ringFlash, 1, "RingFlash1");
+        reg(ModItems.ringGreenLantern,0,"RingLantern0");
+        reg(ModItems.ringGreenLantern,1,"RingLantern1");
+
         reg(ModItems.flash_helm);
         reg(ModItems.flash_chest);
         reg(ModItems.flash_boots);

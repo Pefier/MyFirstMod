@@ -18,7 +18,7 @@ public class TileCharger extends TileEntity implements ITickable{
     public InventoryBasic inventory;
 
     public TileCharger(){
-        inventory =new InventoryBasic("Charger",false,1);
+        inventory = new InventoryBasic("Charger",false,1);
 
     }
     @Override
@@ -46,14 +46,13 @@ public class TileCharger extends TileEntity implements ITickable{
 
     @Override
     public void update() {
-        int charge = 0;
+        int charge;
         if(this.inventory.getStackInSlot(0)!=null){
             if (this.inventory.getStackInSlot(0).getItem()== ModItems.ringGreenLantern){
                 ItemStack itemStack=this.inventory.getStackInSlot(0);
-                NBTTagCompound data = new NBTTagCompound();
                 charge = NBTHelper.getNBTTagInt(itemStack,"tag_charge","tag_lantern");
-                if(charge < 1000){
-                    charge++;
+                if(charge < 10000){
+                    charge+= 10;
 
                 }
 

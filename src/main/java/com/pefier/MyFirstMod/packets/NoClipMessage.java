@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.packets;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.IChatComponent;
@@ -45,7 +46,7 @@ public class NoClipMessage implements IMessage {
                 @Override
                 public void run() {
                     ctx.getServerHandler().playerEntity.noClip=message.noClip;
-                    System.out.println(String.format("Received noClip is : %n from %s", ctx.getServerHandler().playerEntity.noClip, ctx.getServerHandler().playerEntity.getDisplayName()));
+                   // System.out.println(String.format("Received noClip is : %n from %s", ctx.getServerHandler().playerEntity.noClip, ctx.getServerHandler().playerEntity.getDisplayName()));
                 }
             });
 

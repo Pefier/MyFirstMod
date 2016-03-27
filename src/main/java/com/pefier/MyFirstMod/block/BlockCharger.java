@@ -27,6 +27,7 @@ public class BlockCharger extends BlockTileEntityMFM {
         GameRegistry.registerTileEntity(TileCharger.class,name);
         this.setHardness(1.5F);
         this.setResistance(2000F);
+
     }
 
     public static String getName() {
