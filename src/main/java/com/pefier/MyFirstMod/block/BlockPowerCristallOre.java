@@ -28,15 +28,12 @@ public class BlockPowerCristallOre extends BlockMFM {
     }
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune){
-
-        switch (rand.nextInt(3)){
-            case 0: return ModItems.powerCristall;
-            case 1: return ModItems.powerCristall;
-            case 2: return ModItems.powerCristall;
-            case 3: return ModItems.powerCristall;
-            default:return null;
-        }
-
+        return ModItems.powerCristall;
+    }
+    @Override
+    public int damageDropped(IBlockState state) {
+        Random rnd =new Random();
+        return rnd.nextInt(4);
     }
     @Override
     public int quantityDroppedWithBonus(int fortune, Random random)
