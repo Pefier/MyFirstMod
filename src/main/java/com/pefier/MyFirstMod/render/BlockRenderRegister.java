@@ -13,7 +13,7 @@ public class BlockRenderRegister {
 
     public static void registerBlockRenderer() {
         reg(ModBlocks.charger);
-
+        reg(ModBlocks.powerCristallOre);
     }
 
     public static void reg(Block block) {

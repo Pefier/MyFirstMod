@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.init;
 
 import com.pefier.MyFirstMod.block.BlockCharger;
+import com.pefier.MyFirstMod.block.BlockPowerCristallOre;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.world.biome.BiomeCache;
@@ -11,10 +12,11 @@ import net.minecraft.world.biome.BiomeCache;
 public class ModBlocks {
 
     public static Block charger;
+    public static Block powerCristallOre;
 
     public static void preinit(){
         charger = new BlockCharger(Material.piston);
-
+        powerCristallOre = new BlockPowerCristallOre();
 
     }
 }
