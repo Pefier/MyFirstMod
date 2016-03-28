@@ -1,12 +1,16 @@
 package com.pefier.MyFirstMod.item;
 
 import com.pefier.MyFirstMod.utility.NBTHelper;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.util.List;
 
 /**
  * Created by New Profile on 21.03.2016.
@@ -55,11 +59,7 @@ public class ItemRingGreenLanter extends ItemMFM {
                 itemStackIn.setItemDamage(0);
                 NBTHelper.setNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_LANTERN, true);
             }
-
         System.out.print(NBTHelper.getNBTTagInt(itemStackIn,TAG_CHARGE,TAG_LANTERN));
-
-
-
         return itemStackIn;
     }
 
@@ -83,5 +83,15 @@ public class ItemRingGreenLanter extends ItemMFM {
                 }
         }
 
+    }
+    @Override
+    public String getUnlocalizedName(ItemStack stack) {
+        return super.getUnlocalizedName() + "." + (stack.getItemDamage() == 0 ? "aktive" : "normal");
+    }
+
+    @Override
+    public void getSubItems(Item itemIn, CreativeTabs tab, List subItems) {
+        subItems.add(new ItemStack(itemIn, 1, 0));
+        subItems.add(new ItemStack(itemIn, 1, 1));
     }
 }
