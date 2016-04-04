@@ -12,6 +12,7 @@ public final class Name {
     }
     public static  final class GuiIDs{
         public static final int GUI_CHARGER = 1;
+        public static final int GUI_CRAFTING_SURFACE = 2;
 
 
 

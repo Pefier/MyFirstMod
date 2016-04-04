@@ -14,6 +14,7 @@ public class BlockRenderRegister {
     public static void registerBlockRenderer() {
         reg(ModBlocks.charger);
         reg(ModBlocks.powerCristallOre);
+        reg(ModBlocks.craftingSurface);
     }
 
     public static void reg(Block block) {

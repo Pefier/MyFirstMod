@@ -3,7 +3,6 @@ package com.pefier.MyFirstMod.block;
 import com.pefier.MyFirstMod.MyFirstMod;
 import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.tileEntity.TileCharger;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,12 +15,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 /**
  * Created by New Profile on 21.03.2016.
  */
-public class BlockCharger extends BlockTileEntityMFM {
+public class BlockCharger extends BlockContainerMFM {
 
     private static final String name="charger";
 
-    public BlockCharger(Material materialIn) {
-        super(materialIn);
+    public BlockCharger() {
+        super(Material.piston);
         setUnlocalizedName(name);
         GameRegistry.registerBlock(this, name);
         GameRegistry.registerTileEntity(TileCharger.class,name);

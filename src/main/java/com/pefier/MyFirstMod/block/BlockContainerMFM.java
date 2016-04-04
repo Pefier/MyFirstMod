@@ -10,17 +10,16 @@ import net.minecraft.world.World;
 /**
  * Created by New Profile on 22.03.2016.
  */
-public class BlockTileEntityMFM extends BlockContainer {
+public abstract class BlockContainerMFM extends BlockContainer {
 
-    protected BlockTileEntityMFM(Material materialIn) {
+    protected BlockContainerMFM(Material materialIn) {
         super(materialIn);
         setCreativeTab(CreativeTabMFM.MY_TAB);
     }
 
     @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return null;
-    }
+    public abstract TileEntity createNewTileEntity(World worldIn, int meta);
+
     @Override
     public String getUnlocalizedName()
     {
