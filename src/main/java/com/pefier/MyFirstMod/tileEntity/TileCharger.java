@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.tileEntity;
 
 import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
@@ -50,13 +51,13 @@ public class TileCharger extends TileEntity implements ITickable{
         if(this.inventory.getStackInSlot(0)!=null){
             if (this.inventory.getStackInSlot(0).getItem()== ModItems.ringGreenLantern){
                 ItemStack itemStack=this.inventory.getStackInSlot(0);
-                charge = NBTHelper.getNBTTagInt(itemStack,"tag_charge","tag_lantern");
+                charge = NBTHelper.getNBTTagInt(itemStack, Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA);
                 if(charge < 10000){
                     charge+= 10;
 
                 }
 
-                NBTHelper.setNBTTagInt(itemStack,"tag_charge","tag_lantern", charge);
+                NBTHelper.setNBTTagInt(itemStack,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA, charge);
 
             }
 

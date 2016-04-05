@@ -2,6 +2,7 @@ package com.pefier.MyFirstMod.client.handler;
 
 
 import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.reference.Reference;
 import com.pefier.MyFirstMod.utility.InventoryHelper;
 import com.pefier.MyFirstMod.utility.NBTHelper;
@@ -26,7 +27,7 @@ public class OverlayHandler {
                 if(mc.thePlayer.inventory.hasItem(ModItems.ringGreenLantern)){
                     if(InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern).hasTagCompound()&& InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern).getMetadata()==1 ){
 
-                        int Full = (NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern),"tag_charge","tag_lantern")/100);
+                        int Full = (NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern), Name.NBTKey.TAG_CHARGE ,Name.NBTKey.TAG_RINGDATA)/100);
 
                         int posX = (event.resolution.getScaledWidth()/2 -50);
                         int posY = (event.resolution.getScaledHeight()-54);

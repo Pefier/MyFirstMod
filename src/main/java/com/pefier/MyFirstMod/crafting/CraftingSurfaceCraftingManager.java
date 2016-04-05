@@ -6,12 +6,15 @@ import com.google.common.collect.Maps;
 import java.util.*;
 
 import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.reference.Name;
+import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 /**
@@ -34,7 +37,8 @@ public class CraftingSurfaceCraftingManager {
 
     private CraftingSurfaceCraftingManager()
     {
-        this.addRecipe(new ItemStack(ModItems.ringGreenLantern), new Object[] {"ssss","srrs","srrs","ssss", 's', Items.stick,'r',new ItemStack(ModItems.powerCristall,1,0)});
+
+        this.addRecipe(initNBTonRing(new ItemStack(ModItems.ringGreenLantern,1,0)), new Object[] {"ssss","srrs","srrs","ssss", 's', Items.stick,'r',new ItemStack(ModItems.powerCristall,1,0)});
 
 
 
@@ -42,13 +46,6 @@ public class CraftingSurfaceCraftingManager {
     }
 
 
-
-
-
-
-    /**
-     * Adds a shaped recipe to the games recipe list.
-     */
     public CraftingSurfaceShapedRecipes addRecipe(ItemStack stack, Object... recipeComponents)
     {
         String s = "";
@@ -123,9 +120,7 @@ public class CraftingSurfaceCraftingManager {
         return shapedrecipes;
     }
 
-    /**
-     * Adds a shapeless crafting recipe to the the game.
-     */
+
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents)
     {
         List<ItemStack> list = Lists.<ItemStack>newArrayList();
@@ -154,17 +149,13 @@ public class CraftingSurfaceCraftingManager {
         this.recipes.add(new CraftingSurfaceShapelessRecipes(stack, list));
     }
 
-    /**
-     * Adds an IRecipe to the list of crafting recipes.
-     */
+
     public void addRecipe(IRecipe recipe)
     {
         this.recipes.add(recipe);
     }
 
-    /**
-     * Retrieves an ItemStack that has multiple recipes for it.
-     */
+
     public ItemStack findMatchingRecipe(InventoryCrafting p_82787_1_, World worldIn)
     {
         for (IRecipe irecipe : this.recipes)
@@ -201,5 +192,21 @@ public class CraftingSurfaceCraftingManager {
     public List<IRecipe> getRecipeList()
     {
         return this.recipes;
+    }
+
+    private ItemStack initNBTonRing(ItemStack stack){
+        ItemStack stack1 = stack;
+
+        if(!stack1.hasTagCompound()){
+            NBTTagCompound data = new NBTTagCompound();
+            data.setBoolean(Name.NBTKey.TAG_STATUS,true);
+            data.setInteger(Name.NBTKey.TAG_CHARGE,0);
+            stack1.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
+
+
+        }
+
+
+        return stack1;
     }
 }

@@ -17,4 +17,19 @@ public final class Name {
 
 
     }
+    public static final class NBTKey{
+
+        public static final String TAG_RINGDATA="tag_ringdata";
+
+        /**Changebale tags*/
+
+        public static final String TAG_STATUS="tag_status";
+        public static final String TAG_CHARGE="tag_charge";
+        /**NON CHANGEBAL TAGS*/
+        public static final String TAG_MAX_CHARGE="tag_max_charge";
+        public static final String TAG_DMGREDUKTION="tag_dmgreduction";
+        public static final String TAG_DMGINCREASE="tag_dmgincrease";
+
+
+    }
 }

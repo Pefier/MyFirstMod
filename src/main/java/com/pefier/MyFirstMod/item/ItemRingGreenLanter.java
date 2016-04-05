@@ -1,5 +1,6 @@
 package com.pefier.MyFirstMod.item;
 
+import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -19,10 +20,6 @@ public class ItemRingGreenLanter extends ItemMFM {
 
     private static final String name = "RingGreenLantern";
 
-    private static final String TAG_LANTERN = "tag_lantern";
-    private static final String TAG_CHARGE ="tag_charge";
-    private static final String TAG_STATUS ="tag_status";
-
     public ItemRingGreenLanter(){
         super();
         setUnlocalizedName(name);
@@ -39,27 +36,28 @@ public class ItemRingGreenLanter extends ItemMFM {
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
-        if (itemStackIn.getTagCompound() == null) {
+       /* if (itemStackIn.getTagCompound() == null) {
             NBTTagCompound data = new NBTTagCompound();
             data.setInteger(TAG_CHARGE, 0);
             data.setBoolean(TAG_STATUS,true);
             itemStackIn.setTagInfo(TAG_LANTERN, data);
-    }
+            }   */
 
-            if (NBTHelper.getNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_LANTERN)&& NBTHelper.getNBTTagInt(itemStackIn,TAG_CHARGE,TAG_LANTERN) > 0) {
+
+            if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)&& NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0) {
                 playerIn.capabilities.allowFlying = true;
                 playerIn.capabilities.isFlying = true;
                 System.out.println("aktive");
                 itemStackIn.setItemDamage(1);
-                NBTHelper.setNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_LANTERN, false);
+                NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, false);
             } else {
                 playerIn.capabilities.allowFlying = false;
                 playerIn.capabilities.isFlying = false;
                 System.out.println("inaktiv");
                 itemStackIn.setItemDamage(0);
-                NBTHelper.setNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_LANTERN, true);
+                NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, true);
             }
-        System.out.print(NBTHelper.getNBTTagInt(itemStackIn,TAG_CHARGE,TAG_LANTERN));
+        System.out.print(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA));
         return itemStackIn;
     }
 
@@ -67,12 +65,12 @@ public class ItemRingGreenLanter extends ItemMFM {
     public void onUpdate(ItemStack itemStackIn, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(itemStackIn, worldIn, entityIn, itemSlot, isSelected);
         if(itemStackIn.hasTagCompound()) {
-            int charge = NBTHelper.getNBTTagInt(itemStackIn, TAG_CHARGE, TAG_LANTERN);
-                if (NBTHelper.getNBTTagInt(itemStackIn, TAG_CHARGE, TAG_LANTERN) > 0 && !NBTHelper.getNBTTagBoolean(itemStackIn, TAG_STATUS, TAG_LANTERN)) {
+            int charge = NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA);
+                if (NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0 && !NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)) {
                     charge--;
-                    NBTHelper.setNBTTagInt(itemStackIn, TAG_CHARGE, TAG_LANTERN, charge);
+                    NBTHelper.setNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA, charge);
                 }
-                if (NBTHelper.getNBTTagInt(itemStackIn, TAG_CHARGE, TAG_LANTERN) == 0) {
+                if (NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) == 0) {
                     if (entityIn instanceof EntityPlayer) {
                         ((EntityPlayer) entityIn).capabilities.isFlying = false;
                         ((EntityPlayer) entityIn).capabilities.allowFlying = false;
