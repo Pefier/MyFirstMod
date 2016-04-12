@@ -17,6 +17,8 @@ public class ItemRenderRegister {
         ModelBakery.registerItemVariants(ModItems.ringFlash,new ModelResourceLocation(Reference.MOD_ID + ":RingFlash", "inventory"),new ModelResourceLocation(Reference.MOD_ID+ ":RingFlash1", "inventory"));
         ModelBakery.registerItemVariants(ModItems.ringGreenLantern,new ModelResourceLocation(Reference.MOD_ID +":RingLantern0","inventory"),new ModelResourceLocation(Reference.MOD_ID +":RingLantern1","inventory"));
         ModelBakery.registerItemVariants(ModItems.powerCristall,new ModelResourceLocation(Reference.MOD_ID +":PowerCristallRed","inventory"),new ModelResourceLocation(Reference.MOD_ID +":PowerCristallBlue","inventory"),new ModelResourceLocation(Reference.MOD_ID +":PowerCristallGreen","inventory"),new ModelResourceLocation(Reference.MOD_ID +":PowerCristallYellow","inventory"));
+        ModelBakery.registerItemVariants(ModItems.powerCristallUnlocked,new ModelResourceLocation(Reference.MOD_ID +":PowerCristallUnlockedRed","inventory"),new ModelResourceLocation(Reference.MOD_ID +":PowerCristallUnlockedBlue","inventory"),new ModelResourceLocation(Reference.MOD_ID +":PowerCristallUnlockedGreen","inventory"),new ModelResourceLocation(Reference.MOD_ID +":PowerCristallUnlockedYellow","inventory"));
+
     }
 
     public static void registerItemRenderer() {
@@ -29,6 +31,10 @@ public class ItemRenderRegister {
         reg(ModItems.powerCristall,1,"PowerCristallBlue");
         reg(ModItems.powerCristall,2,"PowerCristallGreen");
         reg(ModItems.powerCristall,3,"PowerCristallYellow");
+        reg(ModItems.powerCristallUnlocked,0,"PowerCristallUnlockedRed");
+        reg(ModItems.powerCristallUnlocked,1,"PowerCristallUnlockedBlue");
+        reg(ModItems.powerCristallUnlocked,2,"PowerCristallUnlockedGreen");
+        reg(ModItems.powerCristallUnlocked,3,"PowerCristallUnlockedYellow");
         reg(ModItems.flash_helm);
         reg(ModItems.flash_chest);
         reg(ModItems.flash_boots);

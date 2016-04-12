@@ -48,6 +48,7 @@ public class SurfaceShapedRecipes implements IRecipe {
 
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
+
         ItemStack itemstack = this.getRecipeOutput().copy();
 
         if (this.copyIngredientNBT)

@@ -38,8 +38,8 @@ public class CraftingSurfaceCraftingManager {
     private CraftingSurfaceCraftingManager()
     {
 
-        this.addRecipe(initNBTonRing(new ItemStack(ModItems.ringGreenLantern,1,0)), new Object[] {"ssss","srrs","srrs","ssss", 's', Items.stick,'r',new ItemStack(ModItems.powerCristall,1,0)});
-
+        this.addRecipe(initNBTonRing(new ItemStack(ModItems.ringGreenLantern,1,0),10000), new Object[] {"ssss","srrs","srrs","ssss", 's', Items.stick,'r',new ItemStack(ModItems.powerCristall,1,0)});
+        this.addShapelessRecipe(new ItemStack(ModItems.ringGreenLantern),new Object[]{new ItemStack(ModItems.powerCristallUnlocked), new ItemStack(ModItems.powerCristallUnlocked)});
 
 
         Collections.sort(this.recipes, new CraftingSurfaceRecepiSorter(this));
@@ -63,6 +63,7 @@ public class CraftingSurfaceCraftingManager {
                 ++k;
                 j = s2.length();
                 s = s + s2;
+
             }
         }
         else
@@ -146,6 +147,9 @@ public class CraftingSurfaceCraftingManager {
             }
         }
 
+
+
+
         this.recipes.add(new CraftingSurfaceShapelessRecipes(stack, list));
     }
 
@@ -194,13 +198,14 @@ public class CraftingSurfaceCraftingManager {
         return this.recipes;
     }
 
-    private ItemStack initNBTonRing(ItemStack stack){
+    private ItemStack initNBTonRing(ItemStack stack,int maxcharge){
         ItemStack stack1 = stack;
 
         if(!stack1.hasTagCompound()){
             NBTTagCompound data = new NBTTagCompound();
             data.setBoolean(Name.NBTKey.TAG_STATUS,true);
             data.setInteger(Name.NBTKey.TAG_CHARGE,0);
+            data.setInteger(Name.NBTKey.TAG_MAX_CHARGE,maxcharge);
             stack1.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
 
 

@@ -24,16 +24,19 @@ public class ModItems {
     public static Item greenlantern_boots;
     public static Item ringGreenLantern;
     public static Item powerCristall;
-
+    public static Item powerCristallUnlocked;
     public static void preinit(){
 
         //Normal Items
+
         bambus = new ItemBambus();
         pandaMeat = new ItemPandaMeat();
         ringFlash = new ItemRingFlash();
         ringCold = new ItemRingCold();
         ringGreenLantern = new ItemRingGreenLanter();
         powerCristall = new ItemPowerCristall();
+        powerCristallUnlocked = new ItemPowerCristallUnlocked();
+
         //Armor Items
         ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0);
 
