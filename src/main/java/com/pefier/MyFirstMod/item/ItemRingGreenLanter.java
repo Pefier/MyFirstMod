@@ -36,27 +36,20 @@ public class ItemRingGreenLanter extends ItemMFM {
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
-       /* if (itemStackIn.getTagCompound() == null) {
-            NBTTagCompound data = new NBTTagCompound();
-            data.setInteger(TAG_CHARGE, 0);
-            data.setBoolean(TAG_STATUS,true);
-            itemStackIn.setTagInfo(TAG_LANTERN, data);
-            }   */
 
-
-            if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)&& NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0) {
+        if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)&& NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0) {
                 playerIn.capabilities.allowFlying = true;
                 playerIn.capabilities.isFlying = true;
                 System.out.println("aktive");
                 itemStackIn.setItemDamage(1);
                 NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, false);
-            } else {
+        } else {
                 playerIn.capabilities.allowFlying = false;
                 playerIn.capabilities.isFlying = false;
                 System.out.println("inaktiv");
                 itemStackIn.setItemDamage(0);
                 NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, true);
-            }
+        }
         System.out.print(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA));
         return itemStackIn;
     }

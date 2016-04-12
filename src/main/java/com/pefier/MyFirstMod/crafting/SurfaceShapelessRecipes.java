@@ -1,19 +1,30 @@
 package com.pefier.MyFirstMod.crafting;
 
 import com.google.common.collect.Lists;
+import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.reference.Name;
+import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by New Profile on 11.04.2016.
  */
 public class SurfaceShapelessRecipes implements IRecipe {
+    private int maxcharge=12000;
+    private int rechargerate=10;
+    private int dmgreduction=0;
+    private int dmgIncrease=0;
+    private int minigSpeed=0;
+    private int jumphight=0;
+
     private final ItemStack recipeOutput;
-    public final List<ItemStack> recipeItems;
+    private final List<ItemStack> recipeItems;
 
     public SurfaceShapelessRecipes(ItemStack recipeOutput, List<ItemStack> recipeItems) {
         this.recipeOutput = recipeOutput;
@@ -31,6 +42,7 @@ public class SurfaceShapelessRecipes implements IRecipe {
                 ItemStack itemStack = inv.getStackInRowAndColumn(j,i);
 
                 if(itemStack != null){
+
                     boolean flag = false;
 
                     for(ItemStack itemStack1 : list){
@@ -40,7 +52,6 @@ public class SurfaceShapelessRecipes implements IRecipe {
                             break;
                         }
                     }
-
                     if(!flag){
                         return false;
                     }
@@ -55,11 +66,38 @@ public class SurfaceShapelessRecipes implements IRecipe {
 
     @Override
     public ItemStack getCraftingResult(InventoryCrafting inv) {
-        //änderungen für nbt;
-        NBtRingInit nBtRingInit = new NBtRingInit();
-        return nBtRingInit.calcNBT(this.recipeItems,this.recipeOutput).copy();
-
-
+        for(int i = 0;i<inv.getHeight();i++){
+            for (int j = 0;j< inv.getWidth();j++){
+                ItemStack itemStack = inv.getStackInRowAndColumn(j,i);
+                if(itemStack!= null) {
+                    if(itemStack.getItem() == ModItems.powerCristallUnlocked) {
+                        if (itemStack.getMetadata() == 0) {
+                            dmgIncrease += 1;
+                            System.out.println("meta1");
+                        } else if (itemStack.getMetadata() == 1) {
+                            maxcharge += 600;
+                            System.out.println("meta2");
+                        } else if (itemStack.getMetadata() == 2) {
+                            dmgreduction += 10;
+                            System.out.println("meta3");
+                        } else if (itemStack.getMetadata() == 3) {
+                            maxcharge -= 300;
+                            rechargerate += 1;
+                            minigSpeed += 1;
+                            System.out.println("meta4");
+                        }
+                    }
+                }
+            }
+        }
+        ItemStack output =initNBTonRing(recipeOutput);
+        maxcharge=12000;
+        rechargerate=10;
+        dmgreduction=0;
+        dmgIncrease=0;
+        minigSpeed=0;
+        jumphight=0;
+        return output.copy();
     }
 
     @Override
@@ -69,9 +107,6 @@ public class SurfaceShapelessRecipes implements IRecipe {
 
     @Override
     public ItemStack getRecipeOutput() {
-
-
-
         return this.recipeOutput;
     }
 
@@ -86,5 +121,31 @@ public class SurfaceShapelessRecipes implements IRecipe {
         }
 
         return aitemstack;
+    }
+
+    private ItemStack initNBTonRing(ItemStack stack){
+        ItemStack stack1 = stack;
+        if(!stack1.hasTagCompound()){
+            NBTTagCompound data = new NBTTagCompound();
+            data.setBoolean(Name.NBTKey.TAG_STATUS,true);
+            data.setInteger(Name.NBTKey.TAG_CHARGE,0);
+            data.setInteger(Name.NBTKey.TAG_MAX_CHARGE,maxcharge);
+            data.setInteger(Name.NBTKey.TAG_RECHARGERATE,rechargerate);
+            data.setInteger(Name.NBTKey.TAG_DMGINCREASE,dmgIncrease);
+            data.setInteger(Name.NBTKey.TAG_DMGREDUKTION,dmgreduction);
+            data.setInteger(Name.NBTKey.TAG_MININGSPEED,minigSpeed);
+            data.setInteger(Name.NBTKey.TAG_JUMPHIGHT,jumphight);
+            stack1.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
+        }else{
+            NBTHelper.setNBTTagBoolean(stack1,Name.NBTKey.TAG_STATUS,Name.NBTKey.TAG_RINGDATA,true);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA,0);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_MAX_CHARGE,Name.NBTKey.TAG_RINGDATA,maxcharge);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_RECHARGERATE,Name.NBTKey.TAG_RINGDATA,rechargerate);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_DMGINCREASE,Name.NBTKey.TAG_RINGDATA,dmgIncrease);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_DMGREDUKTION,Name.NBTKey.TAG_RINGDATA,dmgreduction);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA,minigSpeed);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_JUMPHIGHT,Name.NBTKey.TAG_RINGDATA,jumphight);
+        }
+        return stack1;
     }
 }

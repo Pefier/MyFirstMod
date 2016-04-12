@@ -37,9 +37,7 @@ public class CraftingSurfaceCraftingManager {
 
     private CraftingSurfaceCraftingManager()
     {
-
-        this.addRecipe(initNBTonRing(new ItemStack(ModItems.ringGreenLantern,1,0),10000), new Object[] {"ssss","srrs","srrs","ssss", 's', Items.stick,'r',new ItemStack(ModItems.powerCristall,1,0)});
-        this.addShapelessRecipe(new ItemStack(ModItems.ringGreenLantern),new Object[]{new ItemStack(ModItems.powerCristallUnlocked), new ItemStack(ModItems.powerCristallUnlocked)});
+        this.addShapelessRecipe(new ItemStack(ModItems.ringCold),new Object[]{new ItemStack(ModItems.powerCristallUnlocked), new ItemStack(ModItems.powerCristallUnlocked)});
 
 
         Collections.sort(this.recipes, new CraftingSurfaceRecepiSorter(this));
@@ -150,7 +148,7 @@ public class CraftingSurfaceCraftingManager {
 
 
 
-        this.recipes.add(new CraftingSurfaceShapelessRecipes(stack, list));
+        this.recipes.add(new SurfaceShapelessRecipes(stack, list));
     }
 
 
@@ -160,58 +158,44 @@ public class CraftingSurfaceCraftingManager {
     }
 
 
-    public ItemStack findMatchingRecipe(InventoryCrafting p_82787_1_, World worldIn)
+    public ItemStack findMatchingRecipe(InventoryCrafting inventoryCrafting, World worldIn)
     {
         for (IRecipe irecipe : this.recipes)
         {
-            if (irecipe.matches(p_82787_1_, worldIn))
+            if (irecipe.matches(inventoryCrafting, worldIn))
             {
-                return irecipe.getCraftingResult(p_82787_1_);
+                return irecipe.getCraftingResult(inventoryCrafting);
             }
         }
 
         return null;
     }
 
-    public ItemStack[] func_180303_b(InventoryCrafting p_180303_1_, World worldIn)
+    public ItemStack[] func_180303_b(InventoryCrafting inventoryCrafting, World worldIn)
     {
         for (IRecipe irecipe : this.recipes)
         {
-            if (irecipe.matches(p_180303_1_, worldIn))
+            if (irecipe.matches(inventoryCrafting, worldIn))
             {
-                return irecipe.getRemainingItems(p_180303_1_);
+                return irecipe.getRemainingItems(inventoryCrafting);
             }
         }
 
-        ItemStack[] aitemstack = new ItemStack[p_180303_1_.getSizeInventory()];
+        ItemStack[] aitemstack = new ItemStack[inventoryCrafting.getSizeInventory()];
 
         for (int i = 0; i < aitemstack.length; ++i)
         {
-            aitemstack[i] = p_180303_1_.getStackInSlot(i);
+            aitemstack[i] = inventoryCrafting.getStackInSlot(i);
         }
 
         return aitemstack;
     }
+
+
 
     public List<IRecipe> getRecipeList()
     {
         return this.recipes;
     }
 
-    private ItemStack initNBTonRing(ItemStack stack,int maxcharge){
-        ItemStack stack1 = stack;
-
-        if(!stack1.hasTagCompound()){
-            NBTTagCompound data = new NBTTagCompound();
-            data.setBoolean(Name.NBTKey.TAG_STATUS,true);
-            data.setInteger(Name.NBTKey.TAG_CHARGE,0);
-            data.setInteger(Name.NBTKey.TAG_MAX_CHARGE,maxcharge);
-            stack1.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
-
-
-        }
-
-
-        return stack1;
-    }
 }

@@ -11,30 +11,19 @@ import java.util.List;
  * Created by New Profile on 11.04.2016.
  */
 public class NBtRingInit {
-    private int maxcharge;
-    private int rechargerate;
-
-    private int dmgreduction;
-    private int dmgIncrease;
-
-    private int minigSpeed;
-    private int jumphight;
-
-    public NBtRingInit(){
-        maxcharge=0;
-        rechargerate=0;
-        dmgreduction=0;
-        dmgIncrease=0;
-        minigSpeed=0;
-        jumphight=0;
 
 
 
 
-    }
+    public static ItemStack  calcNBT(List<ItemStack> inputList, ItemStack output){
+        int maxcharge=12000;
+        int rechargerate=10;
 
-    public ItemStack calcNBT(List<ItemStack> inputList, ItemStack output){
+        int dmgreduction=0;
+        int dmgIncrease=0;
 
+        int minigSpeed=0;
+        int jumphight=0;
 
 
 
@@ -42,66 +31,67 @@ public class NBtRingInit {
             if(inputList.get(i).getItem() == ModItems.powerCristallUnlocked){
                 //redgem
                 if(inputList.get(i).getMetadata() == 0){
-                dmgIncrease+=1;
 
+                    dmgIncrease+=1;
 
                 //Blue
                 }else if(inputList.get(i).getMetadata() == 1){
-                    maxcharge+=1;
 
-
+                    maxcharge+=600;
 
                     //Green
                 }else if(inputList.get(i).getMetadata() == 2){
 
                     dmgreduction += 10;
 
-
                 //Yellow
                 }else if(inputList.get(i).getMetadata() == 3){
-                    maxcharge-=1;
+
+                    maxcharge-=300;
                     rechargerate+=1;
                     minigSpeed+=1;
 
                 }
-
-
             }
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-        return output;
-    }
-
-
-
-    public static ItemStack initNBTonRing(ItemStack stack, int maxcharge){
-        ItemStack stack1 = stack;
-
-        if(!stack1.hasTagCompound()){
+        ItemStack stack = output;
+        if(!output.hasTagCompound()){
             NBTTagCompound data = new NBTTagCompound();
             data.setBoolean(Name.NBTKey.TAG_STATUS,true);
             data.setInteger(Name.NBTKey.TAG_CHARGE,0);
             data.setInteger(Name.NBTKey.TAG_MAX_CHARGE,maxcharge);
+            data.setInteger(Name.NBTKey.TAG_RECHARGERATE,rechargerate);
+            data.setInteger(Name.NBTKey.TAG_DMGINCREASE,dmgIncrease);
+            data.setInteger(Name.NBTKey.TAG_DMGREDUKTION,dmgreduction);
+            data.setInteger(Name.NBTKey.TAG_MININGSPEED,minigSpeed);
+            data.setInteger(Name.NBTKey.TAG_JUMPHIGHT,jumphight);
             stack.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
 
 
         }
 
+        return stack;
+    }
+
+
+
+   /* private ItemStack initNBTonRing(ItemStack stack){
+        ItemStack stack1 = stack;
+        if(!stack1.hasTagCompound()){
+            NBTTagCompound data = new NBTTagCompound();
+            data.setBoolean(Name.NBTKey.TAG_STATUS,true);
+            data.setInteger(Name.NBTKey.TAG_CHARGE,0);
+            data.setInteger(Name.NBTKey.TAG_MAX_CHARGE,maxcharge);
+            data.setInteger(Name.NBTKey.TAG_RECHARGERATE,rechargerate);
+            data.setInteger(Name.NBTKey.TAG_DMGINCREASE,dmgIncrease);
+            data.setInteger(Name.NBTKey.TAG_DMGREDUKTION,dmgreduction);
+            data.setInteger(Name.NBTKey.TAG_MININGSPEED,minigSpeed);
+            data.setInteger(Name.NBTKey.TAG_JUMPHIGHT,jumphight);
+            stack1.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
+        }
 
         return stack1;
     }
-
+    */
 
 }

@@ -38,7 +38,7 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
     //the number of ticks a pice of coal will provide
     private int forgeTime;
 
-    public int currentItemForgeBurnTime;
+    private int currentItemForgeBurnTime;
 
 
     private String CristallForgeCustomName;

@@ -9,7 +9,7 @@ import java.util.Comparator;
  */
 public class CraftingSurfaceRecepiSorter implements Comparator{
 
-    final CraftingSurfaceCraftingManager craftingSurface;
+    private final CraftingSurfaceCraftingManager craftingSurface;
 
     public CraftingSurfaceRecepiSorter(CraftingSurfaceCraftingManager craftingSurfaceCraftingManager) {
 
@@ -17,7 +17,7 @@ public class CraftingSurfaceRecepiSorter implements Comparator{
     }
 
     public int compareRecepies(IRecipe irecipe1, IRecipe irecipe2){
-        return irecipe1 instanceof CraftingSurfaceShapelessRecipes && irecipe2 instanceof CraftingSurfaceShapedRecipes ? 1:(irecipe2 instanceof CraftingSurfaceShapelessRecipes && irecipe1 instanceof CraftingSurfaceShapedRecipes ? -1 :(irecipe2.getRecipeSize() < irecipe1.getRecipeSize() ? -1 : (irecipe2.getRecipeSize() > irecipe1.getRecipeSize() ? 1 : 0)));
+        return irecipe1 instanceof SurfaceShapelessRecipes && irecipe2 instanceof CraftingSurfaceShapedRecipes ? 1:(irecipe2 instanceof SurfaceShapelessRecipes && irecipe1 instanceof CraftingSurfaceShapedRecipes ? -1 :(irecipe2.getRecipeSize() < irecipe1.getRecipeSize() ? -1 : (irecipe2.getRecipeSize() > irecipe1.getRecipeSize() ? 1 : 0)));
     }
 
     @Override
