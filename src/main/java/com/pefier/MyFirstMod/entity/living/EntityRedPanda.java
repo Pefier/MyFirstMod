@@ -1,4 +1,4 @@
-package com.pefier.MyFirstMod.Mob;
+package com.pefier.MyFirstMod.entity.living;
 
 
 import net.minecraft.entity.EntityAgeable;

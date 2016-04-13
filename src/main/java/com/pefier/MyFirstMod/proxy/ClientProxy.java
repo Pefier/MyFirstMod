@@ -26,7 +26,6 @@ public class ClientProxy extends CommonProxy {
         super.preInit(e);
         ItemRenderRegister.preInit();
         EntityRenderRegister.preinit();
-
         ModKeyBindings.RegisterKeyBindings();
 
 

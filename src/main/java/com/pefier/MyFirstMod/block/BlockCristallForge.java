@@ -2,12 +2,10 @@ package com.pefier.MyFirstMod.block;
 
 import com.pefier.MyFirstMod.MyFirstMod;
 import com.pefier.MyFirstMod.reference.Name;
-import com.pefier.MyFirstMod.tileEntity.TileCharger;
-import com.pefier.MyFirstMod.tileEntity.TileCristallForge;
+import com.pefier.MyFirstMod.entity.tileEntity.TileCristallForge;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;

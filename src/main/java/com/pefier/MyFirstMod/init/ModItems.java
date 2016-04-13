@@ -25,6 +25,8 @@ public class ModItems {
     public static Item ringGreenLantern;
     public static Item powerCristall;
     public static Item powerCristallUnlocked;
+    public static Item blaster;
+
     public static void preinit(){
 
         //Normal Items
@@ -36,6 +38,7 @@ public class ModItems {
         ringGreenLantern = new ItemRingGreenLanter();
         powerCristall = new ItemPowerCristall();
         powerCristallUnlocked = new ItemPowerCristallUnlocked();
+        blaster = new ItemBlaster();
 
         //Armor Items
         ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0);

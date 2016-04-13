@@ -1,6 +1,6 @@
 package com.pefier.MyFirstMod.container;
 
-import com.pefier.MyFirstMod.tileEntity.TileCharger;
+import com.pefier.MyFirstMod.entity.tileEntity.TileCharger;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;

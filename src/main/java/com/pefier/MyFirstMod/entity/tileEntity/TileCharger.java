@@ -1,4 +1,4 @@
-package com.pefier.MyFirstMod.tileEntity;
+package com.pefier.MyFirstMod.entity.tileEntity;
 
 import com.pefier.MyFirstMod.init.ModItems;
 import com.pefier.MyFirstMod.reference.Name;
@@ -7,7 +7,6 @@ import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.ITickable;
 
 

@@ -4,6 +4,7 @@ import com.pefier.MyFirstMod.client.handler.KeyHandler;
 import com.pefier.MyFirstMod.client.handler.OverlayHandler;
 import com.pefier.MyFirstMod.handler.ConfigurationHandler;
 import com.pefier.MyFirstMod.handler.FlashHandler;
+import com.pefier.MyFirstMod.handler.RingHandler;
 import com.pefier.MyFirstMod.init.ModBlocks;
 import com.pefier.MyFirstMod.init.ModItems;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,7 +24,7 @@ public abstract class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new FlashHandler());
         MinecraftForge.EVENT_BUS.register(new KeyHandler());
         MinecraftForge.EVENT_BUS.register(new OverlayHandler());
-
+        MinecraftForge.EVENT_BUS.register(new RingHandler());
 
     }
 

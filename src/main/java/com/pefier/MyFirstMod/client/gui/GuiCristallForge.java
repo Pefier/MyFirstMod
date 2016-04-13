@@ -2,10 +2,9 @@ package com.pefier.MyFirstMod.client.gui;
 
 import com.pefier.MyFirstMod.container.ContainerCirstallForge;
 import com.pefier.MyFirstMod.reference.Reference;
-import com.pefier.MyFirstMod.tileEntity.TileCristallForge;
+import com.pefier.MyFirstMod.entity.tileEntity.TileCristallForge;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
 /**

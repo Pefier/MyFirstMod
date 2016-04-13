@@ -1,11 +1,8 @@
-package com.pefier.MyFirstMod.Mob;
+package com.pefier.MyFirstMod.entity.living;
 
 import com.pefier.MyFirstMod.MyFirstMod;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 /**

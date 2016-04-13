@@ -23,6 +23,7 @@ public class ItemRenderRegister {
 
     public static void registerItemRenderer() {
 
+        //has MetaData
         reg(ModItems.ringFlash, 0, "RingFlash");
         reg(ModItems.ringFlash, 1, "RingFlash1");
         reg(ModItems.ringGreenLantern,0,"RingLantern0");
@@ -35,6 +36,7 @@ public class ItemRenderRegister {
         reg(ModItems.powerCristallUnlocked,1,"PowerCristallUnlockedBlue");
         reg(ModItems.powerCristallUnlocked,2,"PowerCristallUnlockedGreen");
         reg(ModItems.powerCristallUnlocked,3,"PowerCristallUnlockedYellow");
+        //no MetaData
         reg(ModItems.flash_helm);
         reg(ModItems.flash_chest);
         reg(ModItems.flash_boots);
@@ -42,6 +44,7 @@ public class ItemRenderRegister {
         reg(ModItems.bambus);
         reg(ModItems.pandaMeat);
         reg(ModItems.ringCold);
+        reg(ModItems.blaster);
 
 
     }

@@ -1,4 +1,4 @@
-package com.pefier.MyFirstMod.tileEntity;
+package com.pefier.MyFirstMod.entity.tileEntity;
 
 
 import com.pefier.MyFirstMod.container.ContainerCirstallForge;

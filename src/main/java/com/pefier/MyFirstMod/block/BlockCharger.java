@@ -2,7 +2,7 @@ package com.pefier.MyFirstMod.block;
 
 import com.pefier.MyFirstMod.MyFirstMod;
 import com.pefier.MyFirstMod.reference.Name;
-import com.pefier.MyFirstMod.tileEntity.TileCharger;
+import com.pefier.MyFirstMod.entity.tileEntity.TileCharger;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

@@ -1,10 +1,9 @@
 package com.pefier.MyFirstMod.container;
 
 import com.pefier.MyFirstMod.init.ModItems;
-import com.pefier.MyFirstMod.tileEntity.TileCristallForge;
+import com.pefier.MyFirstMod.entity.tileEntity.TileCristallForge;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;

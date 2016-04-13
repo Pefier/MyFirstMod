@@ -37,8 +37,8 @@ public class CraftingSurfaceCraftingManager {
 
     private CraftingSurfaceCraftingManager()
     {
-        this.addShapelessRecipe(new ItemStack(ModItems.ringCold),new Object[]{new ItemStack(ModItems.powerCristallUnlocked), new ItemStack(ModItems.powerCristallUnlocked)});
-
+        this.addShapelessRecipe(new ItemStack(ModItems.ringGreenLantern),new Object[]{new ItemStack(ModItems.powerCristallUnlocked), new ItemStack(ModItems.powerCristallUnlocked)});
+        this.addShapelessRecipe(new ItemStack(ModItems.ringGreenLantern),new Object[]{new ItemStack(ModItems.powerCristallUnlocked),new ItemStack(ModItems.powerCristallUnlocked),new ItemStack(ModItems.powerCristallUnlocked)});
 
         Collections.sort(this.recipes, new CraftingSurfaceRecepiSorter(this));
     }
