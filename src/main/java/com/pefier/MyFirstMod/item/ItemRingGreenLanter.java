@@ -1,6 +1,8 @@
 package com.pefier.MyFirstMod.item;
 
+import com.pefier.MyFirstMod.entity.throwabel.EntityLaser;
 import com.pefier.MyFirstMod.reference.Name;
+import com.pefier.MyFirstMod.reference.Reference;
 import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -36,22 +38,37 @@ public class ItemRingGreenLanter extends ItemMFM {
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+        if(playerIn.isSneaking()) {
 
-        if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)&& NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0) {
+            if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA) && NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0) {
                 playerIn.capabilities.allowFlying = true;
                 playerIn.capabilities.isFlying = true;
                 System.out.println("aktive");
                 itemStackIn.setItemDamage(1);
                 NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, false);
-        } else {
+            } else {
                 playerIn.capabilities.allowFlying = false;
                 playerIn.capabilities.isFlying = false;
                 System.out.println("inaktiv");
                 itemStackIn.setItemDamage(0);
                 NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, true);
+            }
+            System.out.print(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA));
+        }else{
+            if(!NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA) &&  NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0){
+
+                int charge = NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA);
+                worldIn.playSoundAtEntity(playerIn, Reference.MOD_ID+":laser", 0.1F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+                if (!worldIn.isRemote)
+                {
+                    worldIn.spawnEntityInWorld(new EntityLaser(worldIn, playerIn));
+                    charge-= 15 ;
+                    NBTHelper.setNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA, charge);
+                }
+            }
+
         }
-        System.out.print(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA));
-        return itemStackIn;
+            return itemStackIn;
     }
 
     @Override
@@ -63,11 +80,13 @@ public class ItemRingGreenLanter extends ItemMFM {
                     charge--;
                     NBTHelper.setNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA, charge);
                 }
-                if (NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) == 0) {
+                if (NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) <= 0) {
                     if (entityIn instanceof EntityPlayer) {
                         ((EntityPlayer) entityIn).capabilities.isFlying = false;
                         ((EntityPlayer) entityIn).capabilities.allowFlying = false;
+                        NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, true);
                         itemStackIn.setItemDamage(0);
+
                     }
 
 

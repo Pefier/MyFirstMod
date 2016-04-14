@@ -26,25 +26,28 @@ public class ItemRingCold extends ItemMFM{
 
     @Override
     public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn){
-        if(NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)){
-            System.out.println(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_MAX_CHARGE,Name.NBTKey.TAG_RINGDATA));
-            System.out.println(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_RECHARGERATE,Name.NBTKey.TAG_RINGDATA));
-            System.out.println(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_DMGINCREASE,Name.NBTKey.TAG_RINGDATA));
-            System.out.println(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_DMGREDUKTION,Name.NBTKey.TAG_RINGDATA));
-            System.out.println(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_JUMPHIGHT,Name.NBTKey.TAG_RINGDATA));
-            System.out.println(NBTHelper.getNBTTagInt(itemStackIn,Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA));
+
+
+            if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)) {
+                System.out.println(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_MAX_CHARGE, Name.NBTKey.TAG_RINGDATA));
+                System.out.println(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_RECHARGERATE, Name.NBTKey.TAG_RINGDATA));
+                System.out.println(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_DMGINCREASE, Name.NBTKey.TAG_RINGDATA));
+                System.out.println(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_DMGREDUKTION, Name.NBTKey.TAG_RINGDATA));
+                System.out.println(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_JUMPHIGHT, Name.NBTKey.TAG_RINGDATA));
+                System.out.println(NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_MININGSPEED, Name.NBTKey.TAG_RINGDATA));
+
+
+                NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, false);
+            } else {
+
+
+                NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, true);
+            }
 
 
 
 
 
-            NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, false);
-        }else{
-
-
-
-            NBTHelper.setNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA, true);
-        }
 
 
 
