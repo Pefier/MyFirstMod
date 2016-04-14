@@ -33,6 +33,7 @@ public class ItemBlaster extends ItemMFM {
 
         if (!worldIn.isRemote)
         {
+
             worldIn.spawnEntityInWorld(new EntityLaser(worldIn, playerIn));
         }
 

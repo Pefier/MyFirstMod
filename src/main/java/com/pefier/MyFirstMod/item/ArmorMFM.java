@@ -1,4 +1,4 @@
-package com.pefier.MyFirstMod.amor;
+package com.pefier.MyFirstMod.item;
 
 
 import com.pefier.MyFirstMod.creativtab.CreativeTabMFM;

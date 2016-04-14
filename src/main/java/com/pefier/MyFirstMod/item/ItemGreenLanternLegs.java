@@ -1,6 +1,5 @@
 package com.pefier.MyFirstMod.item;
 
-import com.pefier.MyFirstMod.amor.ArmorMFM;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
