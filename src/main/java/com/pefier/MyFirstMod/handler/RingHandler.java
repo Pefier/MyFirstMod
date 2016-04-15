@@ -68,7 +68,7 @@ public class RingHandler {
 
         NBTHelper.setNBTTagInt(InventoryHelper.getItemStackinInventory((EntityPlayer)event.entity,ModItems.ringGreenLantern), Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA,charge);
         System.out.println("damage taken "+ event.ammount);
-        //TODO ChargeUpdate when taken dmg
+
 
 
 
