@@ -72,7 +72,7 @@ public class SurfaceShapelessRecipes implements IRecipe {
                 if(itemStack!= null) {
                     if(itemStack.getItem() == ModItems.powerCristallUnlocked) {
                         if (itemStack.getMetadata() == 0) {
-                            dmgIncrease += 1;
+                            dmgIncrease += 2;
                             System.out.println("meta1");
                         } else if (itemStack.getMetadata() == 1) {
                             maxcharge += 600;

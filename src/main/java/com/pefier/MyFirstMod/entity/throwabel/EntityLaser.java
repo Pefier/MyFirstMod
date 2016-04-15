@@ -36,7 +36,7 @@ public class EntityLaser extends EntityThrowable {
 
         if(position.entityHit != null){
             if(position.entityHit instanceof EntityLivingBase) {
-                position.entityHit.attackEntityFrom(EntityDamageSourceLaser.causeLaserDamage(this, this.getThrower()), dmg);
+                position.entityHit.attackEntityFrom(EntityDamageSourceLaser.causeLaserDamage(this, this.getThrower()), 1 + dmg);
             }
             this.setDead();
         }
