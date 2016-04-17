@@ -78,7 +78,7 @@ public class SurfaceShapelessRecipes implements IRecipe {
                             maxcharge += 600;
                             System.out.println("meta2");
                         } else if (itemStack.getMetadata() == 2) {
-                            dmgreduction += 10;
+                            dmgreduction += 15;
                             System.out.println("meta3");
                         } else if (itemStack.getMetadata() == 3) {
                             maxcharge -= 300;
