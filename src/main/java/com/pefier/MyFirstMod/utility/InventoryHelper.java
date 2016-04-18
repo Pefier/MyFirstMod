@@ -12,9 +12,10 @@ public class InventoryHelper {
 
 
     public static ItemStack getItemStackinInventory(EntityPlayer player, Item item) {
-        if (player.inventory.hasItem(item)) {
+        ItemStack stack = new ItemStack(item);
+        if (player.inventory.hasItemStack(stack)) {
             for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-                if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == item) {
+                if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == stack.getItem()) {
                     return player.inventory.getStackInSlot(i);
                 }
             }

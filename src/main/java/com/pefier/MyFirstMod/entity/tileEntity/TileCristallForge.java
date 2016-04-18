@@ -12,9 +12,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.IChatComponent;
+
 import net.minecraft.util.ITickable;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.ITextComponent;
+
 
 /**
  * Created by New Profile on 07.04.2016.
@@ -104,9 +106,10 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
     }
 
     @Override
-    public IChatComponent getDisplayName() {
+    public ITextComponent getDisplayName() {
         return null;
     }
+
 
     @Override
     public int getInventoryStackLimit() {

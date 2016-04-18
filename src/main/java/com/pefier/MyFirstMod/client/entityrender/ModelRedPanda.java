@@ -3,7 +3,8 @@ package com.pefier.MyFirstMod.client.entityrender;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.MathHelper;
+
 
 /**
  * Created by New Profile on 07.03.2016.

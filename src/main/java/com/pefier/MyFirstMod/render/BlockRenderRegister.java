@@ -3,7 +3,7 @@ package com.pefier.MyFirstMod.render;
 import com.pefier.MyFirstMod.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
 /**

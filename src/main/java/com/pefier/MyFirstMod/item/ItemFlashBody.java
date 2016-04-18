@@ -1,5 +1,6 @@
 package com.pefier.MyFirstMod.item;
 
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -9,8 +10,8 @@ public class ItemFlashBody extends ArmorMFM {
 
     private final String name = "FlashArmor_chest" ;
 
-    public ItemFlashBody(ArmorMaterial material, int renderIndex, int armorType) {
-        super(material, renderIndex, armorType);
+    public ItemFlashBody(ArmorMaterial material, int renderIndex) {
+        super(material, renderIndex, EntityEquipmentSlot.CHEST);
         GameRegistry.registerItem( this ,name);
         setUnlocalizedName(name);
     }

@@ -18,7 +18,7 @@ public class ModEntitys {
     public static void init(){
 
 
-        EntityCreator.createEntity(EntityRedPanda.class, 1 , "RedPanda", EnumCreatureType.AMBIENT, 5,0,2, new BiomeGenBase[] {BiomeGenBase.birchForest,BiomeGenBase.beach});
+        EntityCreator.createEntity(EntityRedPanda.class, 1 , "RedPanda", EnumCreatureType.AMBIENT, 5,0,2, new BiomeGenBase[] {BiomeGenBase.getBiome(5),BiomeGenBase.getBiome(2)});
         EntityRegistry.registerModEntity(EntityLaser.class,"laser",2, MyFirstMod.instance,32,1,true);
     }
 }

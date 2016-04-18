@@ -41,17 +41,17 @@ public class ModItems {
         blaster = new ItemBlaster();
 
         //Armor Items
-        ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0);
+        ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0, null);
 
-        flash_helm =new ItemFlashHelm(Hero,3,0);
-        flash_chest = new ItemFlashBody(Hero, 3, 1);
-        flash_legs = new ItemFlashLegs(Hero, 3, 2);
-        flash_boots = new ItemFlashBoots(Hero, 3, 3);
+        flash_helm =new ItemFlashHelm(Hero,3);
+        flash_chest = new ItemFlashBody(Hero, 3);
+        flash_legs = new ItemFlashLegs(Hero, 3);
+        flash_boots = new ItemFlashBoots(Hero, 3);
 
-        greenlantern_helm = new ItemGreenLanternHelm(Hero, 3,0);
-        greenlantern_chest= new ItemGreenLanternBody(Hero,3,1);
-        greenlantern_legs= new ItemGreenLanternLegs(Hero,3,2);
-        greenlantern_boots= new ItemGreenLanternBoots(Hero,3,3);
+        greenlantern_helm = new ItemGreenLanternHelm(Hero, 3);
+        greenlantern_chest= new ItemGreenLanternBody(Hero,3);
+        greenlantern_legs= new ItemGreenLanternLegs(Hero,3);
+        greenlantern_boots= new ItemGreenLanternBoots(Hero,3);
 
 
     }

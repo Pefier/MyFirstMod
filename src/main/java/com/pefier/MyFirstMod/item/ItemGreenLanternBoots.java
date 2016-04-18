@@ -1,5 +1,6 @@
 package com.pefier.MyFirstMod.item;
 
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -9,8 +10,8 @@ public class ItemGreenLanternBoots extends ArmorMFM {
 
     final static private String name = "GreenLanternArmor_boots";
 
-    public ItemGreenLanternBoots(ArmorMaterial material, int renderIndex, int armorType) {
-        super(material, renderIndex, armorType);
+    public ItemGreenLanternBoots(ArmorMaterial material, int renderIndex) {
+        super(material, renderIndex, EntityEquipmentSlot.FEET);
         GameRegistry.registerItem(this, name);
         setUnlocalizedName(name);
     }

@@ -10,6 +10,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -37,7 +40,7 @@ public class ItemRingGreenLanter extends ItemMFM {
     }
 
     @Override
-    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         if(playerIn.isSneaking()) {
 
             if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA) && NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0) {
@@ -58,7 +61,7 @@ public class ItemRingGreenLanter extends ItemMFM {
             if(!NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA) &&  NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0){
 
                 int charge = NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA);
-                worldIn.playSoundAtEntity(playerIn, Reference.MOD_ID+":laser", 0.1F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+                //worldIn.playSoundAtEntity(playerIn, Reference.MOD_ID+":laser", 0.1F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
                 if (!worldIn.isRemote)
                 {
                     worldIn.spawnEntityInWorld(new EntityLaser(worldIn, playerIn));
@@ -68,7 +71,7 @@ public class ItemRingGreenLanter extends ItemMFM {
             }
 
         }
-            return itemStackIn;
+            return new ActionResult<ItemStack>(EnumActionResult.PASS,itemStackIn);
     }
 
     @Override

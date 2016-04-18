@@ -4,6 +4,9 @@ import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -25,7 +28,7 @@ public class ItemRingCold extends ItemMFM{
     }
 
     @Override
-    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn){
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand){
 
 
             if (NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA)) {
@@ -55,6 +58,6 @@ public class ItemRingCold extends ItemMFM{
 
 
 
-        return itemStackIn;
+        return new ActionResult(EnumActionResult.PASS, itemStackIn);
     }
 }

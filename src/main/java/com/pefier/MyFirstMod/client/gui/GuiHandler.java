@@ -7,7 +7,7 @@ import com.pefier.MyFirstMod.container.ContainerCharger;
 import com.pefier.MyFirstMod.entity.tileEntity.TileCharger;
 import com.pefier.MyFirstMod.entity.tileEntity.TileCristallForge;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 

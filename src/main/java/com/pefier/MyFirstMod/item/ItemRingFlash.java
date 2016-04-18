@@ -5,11 +5,14 @@ import com.pefier.MyFirstMod.utility.NBTHelper;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -42,7 +45,7 @@ public class ItemRingFlash extends ItemMFM{
 
 
     @Override
-    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) {
         if (itemStackIn.getTagCompound()==null){
             NBTTagCompound data = new NBTTagCompound();
             data.setBoolean(TAG_STATUS, true);
@@ -53,19 +56,19 @@ public class ItemRingFlash extends ItemMFM{
 
         if(NBTHelper.getNBTTagBoolean(itemStackIn,TAG_STATUS,TAG_FLASH)){
 
-            playerIn.inventory.addItemStackToInventory(playerIn.getEquipmentInSlot(1));
-            playerIn.inventory.addItemStackToInventory(playerIn.getEquipmentInSlot(2));
-            playerIn.inventory.addItemStackToInventory(playerIn.getEquipmentInSlot(3));
-            playerIn.inventory.addItemStackToInventory(playerIn.getEquipmentInSlot(4));
+            playerIn.inventory.addItemStackToInventory(playerIn.getItemStackFromSlot(EntityEquipmentSlot.FEET));
+            playerIn.inventory.addItemStackToInventory(playerIn.getItemStackFromSlot(EntityEquipmentSlot.LEGS));
+            playerIn.inventory.addItemStackToInventory(playerIn.getItemStackFromSlot(EntityEquipmentSlot.CHEST));
+            playerIn.inventory.addItemStackToInventory(playerIn.getItemStackFromSlot(EntityEquipmentSlot.HEAD));
 
-            playerIn.setCurrentItemOrArmor(1,new ItemStack(ModItems.flash_boots));
-            playerIn.setCurrentItemOrArmor(2,new ItemStack(ModItems.flash_legs));
-            playerIn.setCurrentItemOrArmor(3,new ItemStack(ModItems.flash_chest));
-            playerIn.setCurrentItemOrArmor(4,new ItemStack(ModItems.flash_helm));
+            playerIn.setItemStackToSlot(EntityEquipmentSlot.FEET,new ItemStack(ModItems.flash_boots));
+            playerIn.setItemStackToSlot(EntityEquipmentSlot.LEGS,new ItemStack(ModItems.flash_legs));
+            playerIn.setItemStackToSlot(EntityEquipmentSlot.CHEST,new ItemStack(ModItems.flash_chest));
+            playerIn.setItemStackToSlot(EntityEquipmentSlot.HEAD,new ItemStack(ModItems.flash_helm));
 
             itemStackIn.setItemDamage(1);
             //effects
-            playerIn.addPotionEffect(new PotionEffect(Potion.regeneration.getId(),2000,2));
+            //playerIn.addPotionEffect(new PotionEffect(Potion.regeneration.getId(),2000,2));
 
 
             playerIn.capabilities.setPlayerWalkSpeed(2);
@@ -98,7 +101,7 @@ public class ItemRingFlash extends ItemMFM{
 
 
         }
-        return super.onItemRightClick(itemStackIn, worldIn, playerIn);
+        return super.onItemRightClick(itemStackIn, worldIn, playerIn, hand);
     }
 
 

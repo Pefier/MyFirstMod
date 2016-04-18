@@ -3,8 +3,9 @@ package com.pefier.MyFirstMod.render;
 import com.pefier.MyFirstMod.init.ModItems;
 import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 
 /**

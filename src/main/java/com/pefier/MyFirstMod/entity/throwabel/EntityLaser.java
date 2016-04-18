@@ -9,7 +9,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 
-import net.minecraft.util.MovingObjectPosition;
+
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 /**
@@ -31,8 +32,17 @@ public class EntityLaser extends EntityThrowable {
         super(worldIn, x, y, z);
     }
 
+
+
+
     @Override
-    protected void onImpact(MovingObjectPosition position) {
+    protected float getGravityVelocity()
+    {
+        return 0.01F;
+    }
+
+    @Override
+    protected void onImpact(RayTraceResult position) {
 
         if(position.entityHit != null){
             if(position.entityHit instanceof EntityLivingBase) {
@@ -40,17 +50,5 @@ public class EntityLaser extends EntityThrowable {
             }
             this.setDead();
         }
-
-    }
-    @Override
-    protected float getVelocity()
-    {
-        return 1.3F;
-    }
-
-    @Override
-    protected float getGravityVelocity()
-    {
-        return 0.01F;
     }
 }
