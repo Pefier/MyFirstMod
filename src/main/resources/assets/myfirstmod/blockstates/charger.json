@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "Myfirstmod:charger" }
+		"normal": { "model": "Myfirstmod:Charger" }
 	}
 }
