@@ -13,5 +13,6 @@ public class RenderCristallForge extends TileEntitySpecialRenderer<TileCristallF
     @Override
     public void renderTileEntityAt(TileCristallForge te, double x, double y, double z, float partialTicks, int destroyStage) {
 
+
     }
 }
