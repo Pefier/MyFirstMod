@@ -47,13 +47,18 @@ public class BlockCharger extends BlockContainerMFM {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote){
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
-            if(tileEntity instanceof TileCharger){
-                playerIn.openGui(MyFirstMod.instance, Name.GuiIDs.GUI_CHARGER,worldIn,pos.getX(),pos.getY(),pos.getZ());
+        if (!playerIn.isSneaking()){
+            if (!worldIn.isRemote) {
+
+                TileEntity tileEntity = worldIn.getTileEntity(pos);
+                if (tileEntity instanceof TileCharger) {
+                    playerIn.openGui(MyFirstMod.instance, Name.GuiIDs.GUI_CHARGER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                }
             }
-        }
+            return true;
+        }else{
             return false;
+        }
     }
 
     @Override

@@ -34,13 +34,13 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
     //Time is in ticks
 
     //time required for forging an item. ==
-    private int totalForgeTime;
+    private int totalForgeTime=200;
     //The number of ticks that the forge will keep forging ==FurnaceBurntime
-    private int forgeBurnTime;
+    private int forgeBurnTime=0;
     //the number of ticks a pice of coal will provide
-    private int forgeTime;
+    private int forgeTime=0;
 
-    public int currentItemForgeBurnTime;
+    private int currentItemForgeBurnTime;
 
 
     private String CristallForgeCustomName;

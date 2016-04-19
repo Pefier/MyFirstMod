@@ -10,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -37,20 +39,39 @@ public class BlockCristallForge extends BlockContainerMFM {
     }
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if(!worldIn.isRemote){
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
-            if(tileEntity instanceof TileCristallForge){
-                playerIn.openGui(MyFirstMod.instance, Name.GuiIDs.GUI_CRISTALLFORGE,worldIn,pos.getX(),pos.getY(),pos.getZ());
+        if (!playerIn.isSneaking()) {
+            if (!worldIn.isRemote) {
+                TileEntity tileEntity = worldIn.getTileEntity(pos);
+                if (tileEntity instanceof TileCristallForge) {
+                    playerIn.openGui(MyFirstMod.instance, Name.GuiIDs.GUI_CRISTALLFORGE, worldIn, pos.getX(), pos.getY(), pos.getZ());
+                }
             }
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
-
 
 
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileCristallForge();
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state)
+    {
+        return EnumBlockRenderType.MODEL;
+    }
+
+    @Override
+    public BlockRenderLayer getBlockLayer() {
+        return BlockRenderLayer.TRANSLUCENT;
     }
 
 }
