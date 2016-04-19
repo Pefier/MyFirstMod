@@ -12,14 +12,23 @@ public class InventoryHelper {
 
 
     public static ItemStack getItemStackinInventory(EntityPlayer player, Item item) {
-        ItemStack stack = new ItemStack(item);
-        if (player.inventory.hasItemStack(stack)) {
+
             for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
-                if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == stack.getItem()) {
+                if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == item) {
                     return player.inventory.getStackInSlot(i);
                 }
             }
-        }
+
         return null;
     }
+
+    public static boolean hasItem(EntityPlayer player, Item item){
+        for (int i = 0; i < player.inventory.getSizeInventory(); i++) {
+            if (player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() == item) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

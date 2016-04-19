@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.item;
 
 
+import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
@@ -12,7 +13,8 @@ public class ItemBambus extends ItemMFM {
 
     public ItemBambus(){
         super();
-        GameRegistry.registerItem( this , name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setUnlocalizedName(name);
         setMaxStackSize(64);
     }

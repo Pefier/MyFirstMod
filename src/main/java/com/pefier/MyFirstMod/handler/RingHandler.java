@@ -17,7 +17,7 @@ public class RingHandler {
 
     @SubscribeEvent
     public void breakSpeed(PlayerEvent.BreakSpeed event){
-        if(!event.getEntityPlayer().inventory.hasItemStack(new ItemStack(ModItems.ringGreenLantern))){
+        if(!InventoryHelper.hasItem(event.getEntityPlayer(),ModItems.ringGreenLantern)){
             return;
 
         }
@@ -48,7 +48,6 @@ public class RingHandler {
         if(!(event.getEntityLiving() instanceof EntityPlayer)){
             return;
         }
-
         if(InventoryHelper.getItemStackinInventory((EntityPlayer) event.getEntityLiving() , ModItems.ringGreenLantern).getMetadata() !=1){
             return;
         }
@@ -60,8 +59,10 @@ public class RingHandler {
         if(NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory((EntityPlayer)event.getEntityLiving() ,ModItems.ringGreenLantern), Name.NBTKey.TAG_DMGREDUKTION,Name.NBTKey.TAG_RINGDATA)<=0){
             return;
         }
+
         float dmgReduktion =(float)  NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory((EntityPlayer)event.getEntityLiving() ,ModItems.ringGreenLantern), Name.NBTKey.TAG_DMGREDUKTION,Name.NBTKey.TAG_RINGDATA)/100f;
         int charge = NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory((EntityPlayer)event.getEntityLiving() ,ModItems.ringGreenLantern), Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA);
+        System.out.println("damage bevor reduced " +event.getAmount());
         float x =(dmgReduktion * event.getAmount());
         charge = charge- (int)(event.getAmount()*2);
         event.setAmount(event.getAmount()-x);

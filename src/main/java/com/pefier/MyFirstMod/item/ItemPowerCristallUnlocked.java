@@ -1,5 +1,6 @@
 package com.pefier.MyFirstMod.item;
 
+import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,8 @@ public class ItemPowerCristallUnlocked extends ItemMFM {
     public ItemPowerCristallUnlocked(){
         super();
         setUnlocalizedName(name);
-        GameRegistry.registerItem(this,name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setHasSubtypes(true);
         setMaxStackSize(64);
     }

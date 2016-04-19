@@ -29,7 +29,8 @@ public class ItemRingGreenLanter extends ItemMFM {
         super();
         setUnlocalizedName(name);
         setMaxStackSize(1);
-        GameRegistry.registerItem(this, name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setHasSubtypes(true);
 
 
@@ -62,9 +63,12 @@ public class ItemRingGreenLanter extends ItemMFM {
 
                 int charge = NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA);
                 //worldIn.playSoundAtEntity(playerIn, Reference.MOD_ID+":laser", 0.1F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-                if (!worldIn.isRemote)
-                {
-                    worldIn.spawnEntityInWorld(new EntityLaser(worldIn, playerIn));
+                if (!worldIn.isRemote) {
+
+                    EntityLaser entityLaser = new EntityLaser(worldIn, playerIn);
+                    entityLaser.func_184538_a(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.3F, 0.0F);
+                    worldIn.spawnEntityInWorld(entityLaser);
+
                     charge-= 15 ;
                     NBTHelper.setNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA, charge);
                 }

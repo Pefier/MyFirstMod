@@ -25,7 +25,7 @@ public class OverlayHandler {
             Minecraft mc = Minecraft.getMinecraft();
 
             if(!mc.thePlayer.capabilities.isCreativeMode){
-                if(mc.thePlayer.inventory.hasItemStack(new ItemStack(ModItems.ringGreenLantern))){
+                if(InventoryHelper.hasItem(mc.thePlayer,ModItems.ringGreenLantern)){
                     if(InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern).hasTagCompound()&& InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern).getMetadata()==1 ){
 
                         int Full = (NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(mc.thePlayer,ModItems.ringGreenLantern), Name.NBTKey.TAG_CHARGE ,Name.NBTKey.TAG_RINGDATA)/100);

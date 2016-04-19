@@ -4,6 +4,7 @@ import com.pefier.MyFirstMod.item.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by New Profile on 07.03.2016.
@@ -39,6 +40,8 @@ public class ModItems {
         powerCristall = new ItemPowerCristall();
         powerCristallUnlocked = new ItemPowerCristallUnlocked();
         blaster = new ItemBlaster();
+
+
 
         //Armor Items
         ItemArmor.ArmorMaterial Hero = EnumHelper.addArmorMaterial("hero","", 0, new int[]{3, 8, 6, 3}, 0, null);

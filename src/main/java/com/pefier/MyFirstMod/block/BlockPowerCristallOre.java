@@ -1,9 +1,11 @@
 package com.pefier.MyFirstMod.block;
 
 import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -17,7 +19,9 @@ public class BlockPowerCristallOre extends BlockMFM {
     public BlockPowerCristallOre(){
         super(Material.rock);
         setUnlocalizedName(name);
-        GameRegistry.registerBlock(this,name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
+        GameRegistry.register(new ItemBlock(this).setRegistryName(Reference.MOD_ID,name));
         this.setHardness(1.5F);
         this.setResistance(2000F);
 

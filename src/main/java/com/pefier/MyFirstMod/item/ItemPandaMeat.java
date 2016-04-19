@@ -14,7 +14,8 @@ public class ItemPandaMeat extends ItemMFM{
 
     public ItemPandaMeat(){
         super();
-        GameRegistry.registerItem( this , name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setUnlocalizedName(name);
     }
     public String getName(){

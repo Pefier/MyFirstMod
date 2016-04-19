@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.item;
 
 import com.pefier.MyFirstMod.entity.throwabel.EntityLaser;
+import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.Item;
@@ -22,7 +23,8 @@ public class ItemBlaster extends ItemMFM {
 
     public ItemBlaster(){
         super();
-        GameRegistry.registerItem(this,name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setMaxStackSize(1);
         setUnlocalizedName(name);
 

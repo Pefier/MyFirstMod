@@ -1,9 +1,12 @@
 package com.pefier.MyFirstMod.render;
 
+import com.pefier.MyFirstMod.client.entityrender.RenderCharger;
 import com.pefier.MyFirstMod.client.entityrender.RenderLaser;
 import com.pefier.MyFirstMod.entity.living.EntityRedPanda;
 import com.pefier.MyFirstMod.client.entityrender.RenderRedPanda;
 import com.pefier.MyFirstMod.entity.throwabel.EntityLaser;
+import com.pefier.MyFirstMod.entity.tileEntity.TileCharger;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 /**
@@ -14,5 +17,7 @@ public class EntityRenderRegister {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityRedPanda.class, RenderRedPanda.FACTORY);
         RenderingRegistry.registerEntityRenderingHandler(EntityLaser.class, RenderLaser.FACTORY);
+
+        ClientRegistry.bindTileEntitySpecialRenderer(TileCharger.class,new RenderCharger());
     }
 }

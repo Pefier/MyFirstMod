@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.item;
 
 import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.reference.Reference;
 import com.pefier.MyFirstMod.utility.NBTHelper;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -33,7 +34,8 @@ public class ItemRingFlash extends ItemMFM{
 
     public ItemRingFlash(){
         super();
-        GameRegistry.registerItem( this , name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setUnlocalizedName(name);
         setHasSubtypes(true);
         setMaxStackSize(1);

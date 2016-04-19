@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class FlashHandler {
 
     /**ClimbWalls is aktive wenn aktivated rind is selected */
-
+    //TODO work arround hasItemStack
     @SubscribeEvent
     public void PhaseThroughWalls(LivingEvent.LivingUpdateEvent event){
         if(!(event.getEntityLiving() instanceof EntityPlayer)){

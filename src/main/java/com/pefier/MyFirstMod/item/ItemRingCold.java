@@ -1,6 +1,7 @@
 package com.pefier.MyFirstMod.item;
 
 import com.pefier.MyFirstMod.reference.Name;
+import com.pefier.MyFirstMod.reference.Reference;
 import com.pefier.MyFirstMod.utility.NBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,8 @@ public class ItemRingCold extends ItemMFM{
 
     public ItemRingCold(){
         super();
-        GameRegistry.registerItem( this , name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
         setUnlocalizedName(name);
         setMaxStackSize(1);
 

@@ -2,9 +2,11 @@ package com.pefier.MyFirstMod.block;
 
 import com.pefier.MyFirstMod.MyFirstMod;
 import com.pefier.MyFirstMod.reference.Name;
+import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -22,7 +24,9 @@ public class BlockCraftingSurface extends BlockMFM {
     public BlockCraftingSurface(){
         super(Material.piston);
         setUnlocalizedName(name);
-        GameRegistry.registerBlock(this,name);
+        this.setRegistryName(Reference.MOD_ID,name);
+        GameRegistry.register(this);
+        GameRegistry.register(new ItemBlock(this).setRegistryName(Reference.MOD_ID,name));
         this.setHardness(1.5F);
         this.setResistance(2000F);
     }
