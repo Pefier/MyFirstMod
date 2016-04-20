@@ -4,16 +4,19 @@ import com.pefier.MyFirstMod.MyFirstMod;
 import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.entity.tileEntity.TileCristallForge;
 import com.pefier.MyFirstMod.reference.Reference;
+import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -23,6 +26,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  */
 public class BlockCristallForge extends BlockContainerMFM {
 
+    public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     private static final String name = "CristallForge";
 
     public BlockCristallForge() {
@@ -34,7 +38,7 @@ public class BlockCristallForge extends BlockContainerMFM {
         GameRegistry.registerTileEntity(TileCristallForge.class,name);
         this.setHardness(1.5F);
         this.setResistance(2000F);
-
+        this.setDefaultState(makeDefaultState());
 
     }
     @Override
@@ -50,6 +54,21 @@ public class BlockCristallForge extends BlockContainerMFM {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state)
+    {
+
+            TileEntity tileentity = worldIn.getTileEntity(pos);
+
+            if (tileentity instanceof TileCristallForge)
+            {
+                InventoryHelper.dropInventoryItems(worldIn, pos, (TileCristallForge)tileentity);
+                worldIn.updateComparatorOutputLevel(pos, this);
+            }
+
+        super.breakBlock(worldIn, pos, state);
     }
 
 
@@ -73,5 +92,68 @@ public class BlockCristallForge extends BlockContainerMFM {
     public BlockRenderLayer getBlockLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
+
+    //FACING
+
+    public IBlockState makeDefaultState(){
+        return blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH);
+    }
+
+    @Override
+    public void onBlockAdded(World world, BlockPos pos, IBlockState state){
+        setDefaultFacing(world, pos, state);
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    {
+        worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+    }
+
+    private void setDefaultFacing(World world, BlockPos pos, IBlockState thisState) {
+        if(!world.isRemote) {
+            IBlockState state = world.getBlockState(pos.north());
+            IBlockState state1 = world.getBlockState(pos.south());
+            IBlockState state2 = world.getBlockState(pos.west());
+            IBlockState state3 = world.getBlockState(pos.east());
+            EnumFacing enumfacing = thisState.getValue(FACING);
+
+            if(enumfacing == EnumFacing.NORTH && state.isFullBlock() && !state1.isFullBlock())
+                enumfacing = EnumFacing.SOUTH;
+            else if(enumfacing == EnumFacing.SOUTH && state1.isFullBlock() && !state.isFullBlock())
+                enumfacing = EnumFacing.NORTH;
+            else if(enumfacing == EnumFacing.WEST && state2.isFullBlock() && !state3.isFullBlock())
+                enumfacing = EnumFacing.EAST;
+            else if(enumfacing == EnumFacing.EAST && state3.isFullBlock() && !state2.isFullBlock())
+                enumfacing = EnumFacing.WEST;
+
+            world.setBlockState(pos, thisState.withProperty(FACING, enumfacing), 2);
+        }
+    }
+
+    @Override
+    public IBlockState getStateFromMeta(int meta)
+    {
+        EnumFacing enumfacing = EnumFacing.getFront(meta);
+
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y)
+        {
+            enumfacing = EnumFacing.NORTH;
+        }
+
+        return this.getDefaultState().withProperty(FACING, enumfacing);
+    }
+    @Override
+    public int getMetaFromState(IBlockState state)
+    {
+        return ((EnumFacing)state.getValue(FACING)).getIndex();
+    }
+
+    protected BlockStateContainer createBlockState()
+    {
+        return new BlockStateContainer(this, new IProperty[] {FACING});
+    }
+
+
 
 }
