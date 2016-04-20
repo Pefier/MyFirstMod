@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.pefier.MyFirstMod.amorModels.ModelFlashArmor;
 import com.pefier.MyFirstMod.amorModels.ModelGreenLanternArmor;
+import com.pefier.MyFirstMod.client.handler.ModSoundHandler;
 import com.pefier.MyFirstMod.client.registry.ModKeyBindings;
 import com.pefier.MyFirstMod.init.ModItems;
 import com.pefier.MyFirstMod.render.BlockRenderRegister;
@@ -27,7 +28,7 @@ public class ClientProxy extends CommonProxy {
         ItemRenderRegister.preInit();
         EntityRenderRegister.preinit();
         ModKeyBindings.RegisterKeyBindings();
-
+        ModSoundHandler.init();
 
     }
 

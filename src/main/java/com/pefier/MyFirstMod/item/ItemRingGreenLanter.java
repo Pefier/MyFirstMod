@@ -1,5 +1,6 @@
 package com.pefier.MyFirstMod.item;
 
+import com.pefier.MyFirstMod.client.handler.ModSoundHandler;
 import com.pefier.MyFirstMod.entity.throwabel.EntityLaser;
 import com.pefier.MyFirstMod.reference.Name;
 import com.pefier.MyFirstMod.reference.Reference;
@@ -13,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -62,7 +64,7 @@ public class ItemRingGreenLanter extends ItemMFM {
             if(!NBTHelper.getNBTTagBoolean(itemStackIn, Name.NBTKey.TAG_STATUS, Name.NBTKey.TAG_RINGDATA) &&  NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA) > 0){
 
                 int charge = NBTHelper.getNBTTagInt(itemStackIn, Name.NBTKey.TAG_CHARGE, Name.NBTKey.TAG_RINGDATA);
-                //worldIn.playSoundAtEntity(playerIn, Reference.MOD_ID+":laser", 0.1F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+                worldIn.playSound(playerIn,playerIn.posX,playerIn.posY,playerIn.posZ, ModSoundHandler.laser, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
                 if (!worldIn.isRemote) {
 
                     EntityLaser entityLaser = new EntityLaser(worldIn, playerIn);

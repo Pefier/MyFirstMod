@@ -42,10 +42,10 @@ public class ContainerCirstallForge extends Container{
         int j ;
         int k;
 
-        this.addSlotToContainer(new Slot(cristallForge,index++, 32,23 ));
+        this.addSlotToContainer(new SlotCristallunprozessed(cristallForge,index++, 32,23 ));
         this.addSlotToContainer(new Slot(cristallForge,index++, 50 ,23 ));
-        this.addSlotToContainer(new Slot(cristallForge,index++, 40, 46));
-        this.addSlotToContainer(new Slot(cristallForge,index++, 131, 33));
+        this.addSlotToContainer(new SlotForgeFuel(cristallForge,index++, 40, 46));
+        this.addSlotToContainer(new SlotOutputCristallForge(cristallForge,index++, 131, 33));
 
         //playerInventory
         i = -18;

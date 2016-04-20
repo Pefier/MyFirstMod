@@ -1,3 +1,3 @@
 {
-  "laser":{"category": "player", "sounds": ["laser"]}
+  "laser":{"category": "player", "sounds": ["myfirstmod:laser"]}
 }
