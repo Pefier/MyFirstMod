@@ -33,12 +33,12 @@ public class RenderCristallForge extends TileEntitySpecialRenderer<TileCristallF
         ItemStack output = forge.getStackInSlot(3);
 
         float rot = -90;
-
         IBlockState state = forge.getWorld().getBlockState(forge.getPos());
         if(state.getBlock() != ModBlocks.cristallForge)
             return;
 
         IBlockState actualstate = state.getBlock().getActualState(state,forge.getWorld(), forge.getPos());
+
         EnumFacing facing = actualstate.getValue(BlockCristallForge.FACING);
         switch(facing) {
             case SOUTH:
@@ -59,10 +59,8 @@ public class RenderCristallForge extends TileEntitySpecialRenderer<TileCristallF
         GlStateManager.pushMatrix();
         GlStateManager.translate(x,y,z);
         GlStateManager.translate(0.5, 0, 0.5);
-
         GlStateManager.rotate(rot,0F,1F,0F);
         this.renderItem(forge.getWorld(),input1,partialTicks,0.2, 0.7, -0.3);
-
         GlStateManager.popMatrix();
 
         GlStateManager.pushMatrix();
@@ -70,7 +68,6 @@ public class RenderCristallForge extends TileEntitySpecialRenderer<TileCristallF
         GlStateManager.translate(0.5, 0, 0.5);
         GlStateManager.rotate(rot,0F,1F,0F);
         this.renderItem(forge.getWorld(),input2,partialTicks,0.2, 0.7, 0.3);
-
         GlStateManager.popMatrix();
 
         GlStateManager.pushMatrix();
@@ -78,19 +75,19 @@ public class RenderCristallForge extends TileEntitySpecialRenderer<TileCristallF
         GlStateManager.translate(0.5, 0, 0.5);
         GlStateManager.rotate(rot,0F,1F,0F);
         this.renderItem(forge.getWorld(),output,partialTicks,-0.25, 0.7, 0.0);
-
         GlStateManager.popMatrix();
 
 
     }
+
     private void renderItem(World world, ItemStack stack, float ticks, double x, double y, double z){
 
         RenderItem itemRenderer = mc.getRenderItem();
 
         if(stack != null){
             GlStateManager.translate(x, y, z);
-            EntityItem entityitem = new EntityItem(world, 0.0D, 0.0D, 0.0D, stack);
-            entityitem.hoverStart = 0.0F;
+           // EntityItem entityitem = new EntityItem(world, 0.0D, 0.0D, 0.0D, stack);
+           // entityitem.hoverStart = 0.0F;
             GlStateManager.pushMatrix();
             GlStateManager.disableLighting();
 
@@ -100,7 +97,7 @@ public class RenderCristallForge extends TileEntitySpecialRenderer<TileCristallF
             GlStateManager.scale(0.3F, 0.3F, 0.3F);
             GlStateManager.pushAttrib();
             RenderHelper.enableStandardItemLighting();
-            itemRenderer.renderItem(entityitem.getEntityItem(), ItemCameraTransforms.TransformType.FIXED);
+            itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.FIXED);
             RenderHelper.disableStandardItemLighting();
             GlStateManager.popAttrib();
             GlStateManager.enableLighting();

@@ -1,19 +1,17 @@
 package com.pefier.MyFirstMod.item;
 
-import com.pefier.MyFirstMod.client.handler.ModSoundHandler;
-import com.pefier.MyFirstMod.entity.throwabel.EntityLaser;
+import com.pefier.MyFirstMod.entity.entityfx.LighningTest.LightningBolt;
+import com.pefier.MyFirstMod.entity.entityfx.LighningTest.Vector3;
 import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
- * Created by New Profile on 13.04.2016.
+ The TestBlaster only use to test things.
  */
 public class ItemBlaster extends ItemMFM {
 
@@ -31,13 +29,19 @@ public class ItemBlaster extends ItemMFM {
     public static String getName() {
         return name;
     }
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer player, EnumHand hand)
     {
-        worldIn.playSound(playerIn,playerIn.posX,playerIn.posY,playerIn.posZ, ModSoundHandler.laser, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
-        if (!worldIn.isRemote)
-        {
 
-            worldIn.spawnEntityInWorld(new EntityLaser(worldIn, playerIn));
+        if(worldIn.isRemote) {
+            Vec3d entityVector = new Vec3d(player.posX + player.width / 2, player.posY + player.getEyeHeight(), player.posZ + player.width / 2);
+            Vec3d entityLook = player.getLookVec();
+            int range = 8;
+            Vec3d finalVector = entityVector.addVector(entityLook.xCoord * range, entityLook.yCoord * range, entityLook.zCoord * range);
+            LightningBolt bolt = new LightningBolt(worldIn, Vector3.fromEntity(player), Vector3.fromVec3(finalVector), 0xFF00DE, player.worldObj.rand.nextLong(), 0xCC00FF, 0xFF00DE);
+            bolt.defaultFractal();
+            bolt.finalizeBolt();
+            LightningBolt.boltlist.add(bolt);
+
         }
 
         return new ActionResult(EnumActionResult.PASS, itemStackIn);

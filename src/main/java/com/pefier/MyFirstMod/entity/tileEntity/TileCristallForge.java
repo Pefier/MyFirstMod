@@ -9,6 +9,9 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
@@ -36,9 +39,9 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
     //time required for forging an item. ==
     private int totalForgeTime=200;
     //The number of ticks that the forge will keep forging ==FurnaceBurntime
-    private int forgeBurnTime=0;
+    private int forgeBurnTime;
     //the number of ticks a pice of coal will provide
-    private int forgeTime=0;
+    private int forgeTime;
 
     private int currentItemForgeBurnTime;
 
@@ -228,6 +231,7 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
                 if(this.forgeItemStackArray[1].stackSize <= 0){
                     this.forgeItemStackArray[1] = null;
                 }
+                //paket to Client neede for render update
             }
 
         }
@@ -390,10 +394,15 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
 
     }
 
+    @Override
+    public Packet<?> getDescriptionPacket() {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return new SPacketUpdateTileEntity(this.getPos(),1, nbt);
+    }
 
-
-
-
-
-
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.getNbtCompound());
+    }
 }
