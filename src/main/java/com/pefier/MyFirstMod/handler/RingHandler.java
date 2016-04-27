@@ -1,14 +1,20 @@
 package com.pefier.MyFirstMod.handler;
 
 import com.pefier.MyFirstMod.init.ModItems;
+import com.pefier.MyFirstMod.item.ItemMFM;
 import com.pefier.MyFirstMod.reference.Name;
+import com.pefier.MyFirstMod.reference.Reference;
 import com.pefier.MyFirstMod.utility.InventoryHelper;
 import com.pefier.MyFirstMod.utility.NBTHelper;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.UUID;
 
 /**
  * Created by New Profile on 13.04.2016.
@@ -48,6 +54,9 @@ public class RingHandler {
         if(!(event.getEntityLiving() instanceof EntityPlayer)){
             return;
         }
+        if(!InventoryHelper.hasItem((EntityPlayer) event.getEntityLiving(),ModItems.ringGreenLantern)){
+            return;
+        }
         if(InventoryHelper.getItemStackinInventory((EntityPlayer) event.getEntityLiving() , ModItems.ringGreenLantern).getMetadata() !=1){
             return;
         }
@@ -69,11 +78,9 @@ public class RingHandler {
 
         NBTHelper.setNBTTagInt(InventoryHelper.getItemStackinInventory((EntityPlayer)event.getEntityLiving() ,ModItems.ringGreenLantern), Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA,charge);
         System.out.println("damage taken "+ event.getAmount());
-
-
-
-
-
-
     }
+
+
+
+
 }

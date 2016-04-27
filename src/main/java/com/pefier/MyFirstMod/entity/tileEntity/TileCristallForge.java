@@ -231,7 +231,9 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
                 if(this.forgeItemStackArray[1].stackSize <= 0){
                     this.forgeItemStackArray[1] = null;
                 }
-                //paket to Client neede for render update
+                this.getWorld().notifyBlockUpdate(this.getPos(), this.getWorld().getBlockState(this.getPos()), this.getWorld().getBlockState(this.getPos()), 3);
+
+
             }
 
         }

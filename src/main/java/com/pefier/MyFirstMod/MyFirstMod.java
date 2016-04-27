@@ -14,6 +14,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import org.lwjgl.Sys;
+
+import java.util.UUID;
 
 /**
  * Created by New Profile on 05.03.2016.
@@ -32,6 +35,7 @@ public class MyFirstMod {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e){
+        //System.out.println(UUID.randomUUID());
         proxy.preInit(e);
         ConfigurationHandler.init(e.getSuggestedConfigurationFile());
         ModEntitys.init();

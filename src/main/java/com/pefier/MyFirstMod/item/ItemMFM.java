@@ -5,6 +5,8 @@ import com.pefier.MyFirstMod.reference.Reference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import java.util.UUID;
+
 /**
  * Created by New Profile on 13.03.2016.
  */
@@ -34,5 +36,7 @@ public class ItemMFM extends Item {
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
+
+
 
 }
