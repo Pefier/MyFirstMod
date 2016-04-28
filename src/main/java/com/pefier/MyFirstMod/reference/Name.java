@@ -31,7 +31,8 @@ public final class Name {
         public static final String TAG_DMGREDUKTION="tag_dmgreduction";
         public static final String TAG_DMGINCREASE="tag_dmgincrease";
         public static final String TAG_RECHARGERATE="tag_rechargerate"; // for energy
-        public static final String TAG_MININGSPEED="tag_miningspeed"; //attak speed
+        public static final String TAG_MININGSPEED="tag_miningspeed";
         public static final String TAG_JUMPHIGHT="tag_jumphight";
+        public static final String TAG_ATTACKSPEED="tag_attackspeed";
     }
 }

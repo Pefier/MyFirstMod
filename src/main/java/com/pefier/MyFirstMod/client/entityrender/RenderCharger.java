@@ -21,7 +21,7 @@ public class RenderCharger extends TileEntitySpecialRenderer<TileCharger> {
 
     @Override
     public void renderTileEntityAt(TileCharger charger, double x, double y, double z, float partialTicks, int destroyStage) {
-        ItemStack input = charger.inventory.getStackInSlot(0);
+        ItemStack input = charger.getStackInSlot(0);
 
         GlStateManager.pushMatrix();
         GlStateManager.translate(x,y,z);

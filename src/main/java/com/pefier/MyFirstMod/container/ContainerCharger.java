@@ -19,7 +19,7 @@ public class ContainerCharger extends Container {
         int j;
         int k;
 
-        addSlotToContainer(new Slot(charger.inventory, index , 80, 35));
+        addSlotToContainer(new Slot(charger, index , 80, 35));
 
         for (j = 0; j < 3; ++j){
             for (k = 0; k < 9; ++k) {

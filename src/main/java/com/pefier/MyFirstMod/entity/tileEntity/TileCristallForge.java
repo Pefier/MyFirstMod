@@ -67,7 +67,7 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
     @Override
     public ItemStack decrStackSize(int index, int count) {
 
-        ItemStack stack = getStackInSlot (index);
+        ItemStack stack = getStackInSlot(index);
 
         if (stack != null) {
             if (stack.stackSize <= count) {
@@ -181,6 +181,7 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
         }
 
     }
+
     public int getCookTime(ItemStack stack){
 
         return 200;
