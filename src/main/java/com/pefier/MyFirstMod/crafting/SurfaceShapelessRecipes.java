@@ -75,20 +75,19 @@ public class SurfaceShapelessRecipes implements IRecipe {
                         if (itemStack.getMetadata() == 0) {
                             maxcharge -= 300;
                             dmgIncrease += 2;
-                            System.out.println("meta1");
+
                         } else if (itemStack.getMetadata() == 1) {
                             maxcharge += 600;
-                            System.out.println("meta2");
+
                         } else if (itemStack.getMetadata() == 2) {
+                            maxcharge -=300;
                             dmgreduction += 15;
-                            attackspeed += 2D;
-                            rechargerate -= 1;
-                            System.out.println("meta3");
+                            attackspeed += 0.75D;
+                            rechargerate -= 2;
                         } else if (itemStack.getMetadata() == 3) {
                             maxcharge -= 450;
                             rechargerate += 2;
                             minigSpeed += 1;
-                            System.out.println("meta4");
                         }
                     }
                 }

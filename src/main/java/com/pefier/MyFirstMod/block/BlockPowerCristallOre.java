@@ -23,8 +23,8 @@ public class BlockPowerCristallOre extends BlockMFM {
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this).setRegistryName(Reference.MOD_ID,name));
         this.setHarvestLevel("pickaxe",3);
-        this.setHardness(1.5F);
-        this.setResistance(2000F);
+        this.setHardness(20.5F);
+        this.setResistance(3000F);
 
     }
 
