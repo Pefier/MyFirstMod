@@ -74,8 +74,8 @@ public class TileCharger extends TileEntity implements ITickable,IInventory{
             if (this.getStackInSlot(0).getItem()== ModItems.ringGreenLantern){
                 ItemStack itemStack=this.getStackInSlot(0);
                 charge = NBTHelper.getNBTTagInt(itemStack, Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA);
-                if(charge < 10000){
-                    charge+= 10;
+                if(charge < NBTHelper.getNBTTagInt(itemStack, Name.NBTKey.TAG_MAX_CHARGE,Name.NBTKey.TAG_RINGDATA)){
+                    charge+= NBTHelper.getNBTTagInt(itemStack, Name.NBTKey.TAG_RECHARGERATE,Name.NBTKey.TAG_RINGDATA);
 
                 }
 

@@ -22,6 +22,7 @@ public class BlockPowerCristallOre extends BlockMFM {
         this.setRegistryName(Reference.MOD_ID,name);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this).setRegistryName(Reference.MOD_ID,name));
+        this.setHarvestLevel("pickaxe",3);
         this.setHardness(1.5F);
         this.setResistance(2000F);
 
@@ -34,6 +35,7 @@ public class BlockPowerCristallOre extends BlockMFM {
     public Item getItemDropped(IBlockState state, Random rand, int fortune){
         return ModItems.powerCristall;
     }
+
     @Override
     public int damageDropped(IBlockState state) {
         Random rnd =new Random();

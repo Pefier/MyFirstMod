@@ -18,6 +18,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import org.lwjgl.input.Keyboard;
 
 import java.util.*;
 
@@ -119,7 +120,7 @@ public class ItemRingGreenLanter extends ItemMFM {
         playerIn.capabilities.allowFlying = true;
         playerIn.capabilities.isFlying = true;
         if(playerIn.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).getModifier(id) == null) {
-            playerIn.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).applyModifier(new AttributeModifier(id,"Speedmod",16,1));
+            playerIn.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).applyModifier(new AttributeModifier(id,"Speedmod",NBTHelper.getNBTTagDouble(itemStackIn,Name.NBTKey.TAG_ATTACKSPEED,Name.NBTKey.TAG_RINGDATA),0));
         }
         System.out.println("aktive");
         itemStackIn.setItemDamage(1);
@@ -133,10 +134,23 @@ public class ItemRingGreenLanter extends ItemMFM {
         if(playerIn.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).getModifier(id) != null) {
             playerIn.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).removeModifier(id);
         }
+
         System.out.println("inaktiv");
         itemStackIn.setItemDamage(0);
 
     }
 
+    @Override //is ClientSide only
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
+        super.addInformation(stack, playerIn, tooltip, advanced);
+        tooltip.add("Press Shift for information");
 
+        if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)||Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+            tooltip.add(NBTHelper.printNBTInt(stack,Name.NBTKey.TAG_DMGREDUKTION,Name.NBTKey.TAG_RINGDATA,"Damage Reduktion: "));
+            tooltip.add(NBTHelper.printNBTDouble(stack,Name.NBTKey.TAG_ATTACKSPEED,Name.NBTKey.TAG_RINGDATA,"Attack Speed: "));
+            tooltip.add(NBTHelper.printNBTInt(stack,Name.NBTKey.TAG_DMGINCREASE,Name.NBTKey.TAG_RINGDATA,"Laser Damage: "));
+        }
+
+
+    }
 }

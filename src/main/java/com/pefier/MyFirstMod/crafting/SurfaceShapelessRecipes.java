@@ -22,7 +22,7 @@ public class SurfaceShapelessRecipes implements IRecipe {
     private int dmgIncrease=0;
     private int minigSpeed=0;
     private int jumphight=0;
-    private int attackspeed=0;
+    private double attackspeed=0;
 
     private final ItemStack recipeOutput;
     private final List<ItemStack> recipeItems;
@@ -81,6 +81,8 @@ public class SurfaceShapelessRecipes implements IRecipe {
                             System.out.println("meta2");
                         } else if (itemStack.getMetadata() == 2) {
                             dmgreduction += 15;
+                            attackspeed += 2D;
+                            rechargerate -= 1;
                             System.out.println("meta3");
                         } else if (itemStack.getMetadata() == 3) {
                             maxcharge -= 450;
@@ -99,6 +101,7 @@ public class SurfaceShapelessRecipes implements IRecipe {
         dmgIncrease=0;
         minigSpeed=0;
         jumphight=0;
+        attackspeed=0;
         return output.copy();
     }
 
@@ -137,18 +140,18 @@ public class SurfaceShapelessRecipes implements IRecipe {
             data.setInteger(Name.NBTKey.TAG_DMGREDUKTION,dmgreduction);
             data.setInteger(Name.NBTKey.TAG_MININGSPEED,minigSpeed);
             data.setInteger(Name.NBTKey.TAG_JUMPHIGHT,jumphight);
-            data.setInteger(Name.NBTKey.TAG_ATTACKSPEED,attackspeed);
+            data.setDouble(Name.NBTKey.TAG_ATTACKSPEED,attackspeed);
             stack1.setTagInfo(Name.NBTKey.TAG_RINGDATA,data);
         }else{
             NBTHelper.setNBTTagBoolean(stack1,Name.NBTKey.TAG_STATUS,Name.NBTKey.TAG_RINGDATA,true);
-            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA,0);
+            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_CHARGE,Name.NBTKey.TAG_RINGDATA,100);
             NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_MAX_CHARGE,Name.NBTKey.TAG_RINGDATA,maxcharge);
             NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_RECHARGERATE,Name.NBTKey.TAG_RINGDATA,rechargerate);
             NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_DMGINCREASE,Name.NBTKey.TAG_RINGDATA,dmgIncrease);
             NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_DMGREDUKTION,Name.NBTKey.TAG_RINGDATA,dmgreduction);
             NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA,minigSpeed);
             NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_JUMPHIGHT,Name.NBTKey.TAG_RINGDATA,jumphight);
-            NBTHelper.setNBTTagInt(stack1,Name.NBTKey.TAG_ATTACKSPEED,Name.NBTKey.TAG_RINGDATA,attackspeed);
+            NBTHelper.setNBTTagDouble(stack1,Name.NBTKey.TAG_ATTACKSPEED,Name.NBTKey.TAG_RINGDATA,attackspeed);
         }
         return stack1;
     }
