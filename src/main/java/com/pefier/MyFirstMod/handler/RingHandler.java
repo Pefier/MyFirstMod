@@ -38,12 +38,12 @@ public class RingHandler {
         if(NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(event.getEntityPlayer(),ModItems.ringGreenLantern), Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA)<=0){
             return;
         }
-        if(event.getOriginalSpeed()<= NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(event.getEntityPlayer(),ModItems.ringGreenLantern), Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA)){
+        if(event.getOriginalSpeed() >= NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(event.getEntityPlayer(),ModItems.ringGreenLantern), Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA)){
             return;
         }
 
         System.out.println("Old Seed: "+event.getOriginalSpeed());
-        event.setNewSpeed(12f);
+        event.setNewSpeed((float) NBTHelper.getNBTTagInt(InventoryHelper.getItemStackinInventory(event.getEntityPlayer(),ModItems.ringGreenLantern), Name.NBTKey.TAG_MININGSPEED,Name.NBTKey.TAG_RINGDATA));
         System.out.println("New Speed"+event.getNewSpeed()+"Old Speed"+event.getOriginalSpeed());
 
 

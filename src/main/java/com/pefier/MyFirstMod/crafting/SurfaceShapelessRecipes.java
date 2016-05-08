@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class SurfaceShapelessRecipes implements IRecipe {
     private int maxcharge=12000;
-    private int rechargerate=10;
+    private int rechargerate=100;
     private int dmgreduction=0;
     private int dmgIncrease=0;
     private int minigSpeed=0;
@@ -83,11 +83,11 @@ public class SurfaceShapelessRecipes implements IRecipe {
                             maxcharge -=300;
                             dmgreduction += 15;
                             attackspeed += 0.75D;
-                            rechargerate -= 2;
+                            rechargerate -= 20;
                         } else if (itemStack.getMetadata() == 3) {
                             maxcharge -= 450;
-                            rechargerate += 2;
-                            minigSpeed += 1;
+                            rechargerate += 20;
+                            minigSpeed += 9;
                         }
                     }
                 }
