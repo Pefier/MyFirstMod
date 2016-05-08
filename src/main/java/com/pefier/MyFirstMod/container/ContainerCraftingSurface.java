@@ -46,7 +46,7 @@ public class ContainerCraftingSurface extends Container {
 
         for(j =0; j< 4;j++){
 
-                this.addSlotToContainer(new SlotRedCristall(craftMatrix, index++,8 ,6+j*18));
+            this.addSlotToContainer(new SlotRedCristall(craftMatrix, index++,8 ,6+j*18));
 
         }
         for(j =0; j< 4;j++){
@@ -65,7 +65,7 @@ public class ContainerCraftingSurface extends Container {
 
         }
 
-        this.addSlotToContainer(new SlotCrystallCrafting(playerInv.player,craftMatrix,craftResult,index++,124,36));
+        this.addSlotToContainer(new SlotCrystallCrafting(playerInv.player,craftMatrix,craftResult,index++,132,35));
 
 
         //playerInventory

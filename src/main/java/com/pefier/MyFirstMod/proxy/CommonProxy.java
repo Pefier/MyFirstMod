@@ -2,6 +2,7 @@ package com.pefier.MyFirstMod.proxy;
 
 import com.pefier.MyFirstMod.client.handler.KeyHandler;
 import com.pefier.MyFirstMod.client.handler.OverlayHandler;
+import com.pefier.MyFirstMod.crafting.VanillaRecepies;
 import com.pefier.MyFirstMod.handler.ConfigurationHandler;
 import com.pefier.MyFirstMod.handler.FlashHandler;
 import com.pefier.MyFirstMod.handler.RingHandler;
@@ -33,6 +34,7 @@ public abstract class CommonProxy {
     public void init(FMLInitializationEvent e) {
 
         GameRegistry.registerWorldGenerator(new WorldGenerator(),0);
+        VanillaRecepies.init();
     }
 
     public void postInit(FMLPostInitializationEvent e) {

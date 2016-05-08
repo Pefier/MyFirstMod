@@ -99,7 +99,7 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
     }
 
     @Override
-    public String getName() {
+    public  String getName() {
         return hasCustomName() ? CristallForgeCustomName : "container.CristallForge";
     }
 
@@ -194,7 +194,7 @@ public class TileCristallForge extends TileEntity implements ISidedInventory, IT
 
     }
 
-    private boolean canForge() {
+    public boolean canForge() {
         if (forgeItemStackArray[0] == null || forgeItemStackArray[1] == null) {
             return false;
 

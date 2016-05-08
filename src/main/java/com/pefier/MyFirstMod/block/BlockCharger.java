@@ -38,7 +38,7 @@ public class BlockCharger extends BlockContainerMFM {
 
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 

@@ -1,13 +1,10 @@
 package com.pefier.MyFirstMod.crafting;
 
-import com.google.common.collect.Table;
-import com.pefier.MyFirstMod.container.ContainerCirstallForge;
 import com.pefier.MyFirstMod.init.ModItems;
 import javafx.util.Pair;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import javax.annotation.Nullable;
 import java.util.*;
 
 
@@ -20,7 +17,7 @@ public class ForgeRecipes {
 
 
     private static final ForgeRecipes forgeRecipes = new ForgeRecipes();
-    //Implemetnt recipe handler
+
 
     private HashMap<Pair<ItemStack,ItemStack>,ItemStack> metaForgeTable=new HashMap<Pair<ItemStack, ItemStack>, ItemStack>();
 
@@ -41,18 +38,7 @@ public class ForgeRecipes {
 
     }
 
-    public void addForgeRecipe2(ItemStack input1, ItemStack input2, ItemStack stack) {
-        // Check if recipe already exists and print conflict information:
 
-
-        if (metaForgeList.containsKey(input1)) {
-            System.out.println("[WARNING] Conflicting recipe: ");
-        } else {
-
-            metaForgeList.put(input1, stack);
-
-        }
-    }
 
     public void addForgeRecipe(ItemStack in1,ItemStack in2,ItemStack out){
 
@@ -60,21 +46,6 @@ public class ForgeRecipes {
         metaForgeTable.put(new Pair<ItemStack, ItemStack>(in1,in2),out);
     }
 
-    public ItemStack getForgingResult2(ItemStack input1, ItemStack input2) {
-
-        Iterator iterator = metaForgeList.entrySet().iterator();
-        Map.Entry entry;
-        do{
-            if(!iterator.hasNext()){
-                return  null;
-            }
-            entry =(Map.Entry)iterator.next();
-        }while(!areItemStacksEqual(input1, (ItemStack)entry.getKey()));
-
-
-
-        return(ItemStack)entry.getValue();
-    }
 
     public ItemStack getForgingResult(ItemStack in1,ItemStack in2){
         Iterator iterator = metaForgeTable.entrySet().iterator();
@@ -93,10 +64,6 @@ public class ForgeRecipes {
     }
 
 
-
-    private boolean areItemStacksEqual(ItemStack input1, ItemStack input2) {
-       return input1.getItem() == input2.getItem() &&(input2.getMetadata() == 32767 || input1.getMetadata() == input2.getMetadata());
-    }
     private boolean areItemPairStacksEqual(Pair<ItemStack,ItemStack> input1,Pair<ItemStack,ItemStack> input2){
         boolean flag =false;
         if(input1.getKey().getItem() == input2.getKey().getItem() && input1.getValue().getItem() == input2.getValue().getItem()){
