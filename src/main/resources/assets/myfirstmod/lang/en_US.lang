@@ -6,8 +6,26 @@ item.myfirstmod:RingFlash.name=Power Ring The Flash
 item.myfirstmod:RingCold.name=Power Ring Captian Cold
 item.myfirstmod:FlashArmor_boots.name=Flash Boots
 item.myfirstmod:FlashArmor_helm.name=Flash Cap
-item.myfirstmod:FlashArmor_body.name=Flash Chest
+item.myfirstmod:FlashArmor_chest.name=Flash Chest
 item.myfirstmod:FlashArmor_legs.name=Flash Legs
+item.myfirstmod:PowerCristall.Red.name=Impure Red Power Cristal
+item.myfirstmod:PowerCristall.Blue.name=Impure Blue Power Cristal
+item.myfirstmod:PowerCristall.Green.name=Impure Green Power Cristal
+item.myfirstmod:PowerCristall.Yellow.name=Impure Yellow Power Cristal
+item.myfirstmod:PowerCristallUnlocked.Red.name=Red Power Cristal
+item.myfirstmod:PowerCristallUnlocked.Blue.name=Blue Power Cristal
+item.myfirstmod:PowerCristallUnlocked.Green.name=Green Power Cristal
+item.myfirstmod:PowerCristallUnlocked.Yellow.name=Yellow Power Cristal
+item.myfirstmod:RingGreenLantern.normal.name=Power Ring
+item.myfirstmod:RingGreenLantern.aktive.name=Power Ring
+
+
+
+#Tile
+tile.myfirstmod:charge.name=Ring Charging Station
+tile.myfirstmod:PowerCristallOre.name=Power Cristal Ore
+tile.myfirstmod:CraftingSurface.name=Ring Builder
+tile.myfirstmod:CristallForge.name=Cristal Forge
 
 #Keys
 Keys.myfirstmod.category=MFM
