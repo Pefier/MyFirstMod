@@ -1,7 +1,6 @@
 package com.pefier.MyFirstMod.init;
 
 import com.pefier.MyFirstMod.MyFirstMod;
-import com.pefier.MyFirstMod.entity.living.EntityCreator;
 import com.pefier.MyFirstMod.entity.living.EntityRedPanda;
 import com.pefier.MyFirstMod.entity.throwabel.EntityLaser;
 import net.minecraft.entity.EnumCreatureType;
@@ -16,8 +15,12 @@ public class ModEntitys {
     public static void init(){
 
 
-        EntityCreator.createEntity(EntityRedPanda.class, 1 , "RedPanda", EnumCreatureType.AMBIENT, 5,0,2, new BiomeGenBase[] {BiomeGenBase.getBiome(5),BiomeGenBase.getBiome(2)});
+
+        EntityRegistry.registerModEntity(EntityRedPanda.class, "RedPanda", 1, MyFirstMod.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityLaser.class,"laser",2, MyFirstMod.instance,32,1,true);
+        EntityRegistry.addSpawn(EntityRedPanda.class,2,1,4,EnumCreatureType.AMBIENT, new BiomeGenBase[] {BiomeGenBase.getBiome(30),BiomeGenBase.getBiome(31)});
+
+
 
     }
 }

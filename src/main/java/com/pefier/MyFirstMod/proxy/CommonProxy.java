@@ -5,12 +5,14 @@ import com.pefier.MyFirstMod.client.handler.OverlayHandler;
 import com.pefier.MyFirstMod.handler.ConfigurationHandler;
 import com.pefier.MyFirstMod.handler.FlashHandler;
 import com.pefier.MyFirstMod.handler.RingHandler;
+import com.pefier.MyFirstMod.handler.WorldGenerator;
 import com.pefier.MyFirstMod.init.ModBlocks;
 import com.pefier.MyFirstMod.init.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Created by New Profile on 06.03.2016.
@@ -30,6 +32,7 @@ public abstract class CommonProxy {
 
     public void init(FMLInitializationEvent e) {
 
+        GameRegistry.registerWorldGenerator(new WorldGenerator(),0);
     }
 
     public void postInit(FMLPostInitializationEvent e) {

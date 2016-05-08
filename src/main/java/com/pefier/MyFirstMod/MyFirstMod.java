@@ -35,10 +35,11 @@ public class MyFirstMod {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent e){
-        //System.out.println(UUID.randomUUID());
         proxy.preInit(e);
         ConfigurationHandler.init(e.getSuggestedConfigurationFile());
         ModEntitys.init();
+
+
 
         NetworkRegistry.INSTANCE.registerGuiHandler(instance,new GuiHandler());
 

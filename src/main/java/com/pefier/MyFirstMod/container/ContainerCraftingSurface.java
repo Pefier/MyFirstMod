@@ -45,10 +45,24 @@ public class ContainerCraftingSurface extends Container {
 
 
         for(j =0; j< 4;j++){
-            for(k =0;k<4;k++) {
-                this.addSlotToContainer(new Slot(craftMatrix, index++, 14+k*18,6+j*18));
 
-            }
+                this.addSlotToContainer(new SlotRedCristall(craftMatrix, index++,8 ,6+j*18));
+
+        }
+        for(j =0; j< 4;j++){
+
+            this.addSlotToContainer(new SlotYellowCristall(craftMatrix, index++, 29, 6+j*18));
+
+        }
+        for(j =0; j< 4;j++){
+
+            this.addSlotToContainer(new SlotBlueCristall(craftMatrix, index++, 50, 6+j*18));
+
+        }
+        for(j =0; j< 4;j++){
+
+            this.addSlotToContainer(new SlotGreenCristall(craftMatrix, index++, 71, 6+j*18));
+
         }
 
         this.addSlotToContainer(new SlotCrystallCrafting(playerInv.player,craftMatrix,craftResult,index++,124,36));

@@ -40,19 +40,27 @@ public class NBTHelper {
 
     }
     public static String printNBTInt(ItemStack itemStack,String tag, String MasterTag,String befor){
-        NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+        if (itemStack.hasTagCompound()) {
+            NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+            if (data != null) {
+                String value = "" + data.getInteger(tag);
 
-        String value = "" + data.getInteger(tag);
-
-        return befor + value;
+                return befor + value;
+            }
+        }
+        return "";
     }
-    public static String printNBTDouble(ItemStack itemStack,String tag, String MasterTag,String befor){
-        NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+    public static String printNBTDouble(ItemStack itemStack,String tag, String MasterTag,String befor) {
+        if (itemStack.hasTagCompound()) {
+            NBTTagCompound data = itemStack.getTagCompound().getCompoundTag(MasterTag);
+            if (data != null) {
+                String value = String.format("%.2f", data.getDouble(tag));
 
-        String value = String.format("%.2f",data.getDouble(tag));
+                return befor + value;
 
-        return befor + value;
+            }
+        }
+        return "";
     }
-
 
 }

@@ -21,6 +21,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.Random;
+
 /**
  * Created by New Profile on 07.04.2016.
  */
@@ -95,6 +97,7 @@ public class BlockCristallForge extends BlockContainerMFM {
 
     //FACING
 
+
     public IBlockState makeDefaultState(){
         return blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH);
     }
@@ -109,6 +112,7 @@ public class BlockCristallForge extends BlockContainerMFM {
     {
         worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
     }
+
 
     private void setDefaultFacing(World world, BlockPos pos, IBlockState thisState) {
         if(!world.isRemote) {
@@ -149,11 +153,94 @@ public class BlockCristallForge extends BlockContainerMFM {
         return ((EnumFacing)state.getValue(FACING)).getIndex();
     }
 
+    @Override
     protected BlockStateContainer createBlockState()
     {
         return new BlockStateContainer(this, new IProperty[] {FACING});
     }
 
+    @Override
+    public void updateTick(World world, BlockPos pos, IBlockState state, Random rand) {
+
+        if(!world.isRemote && world.getTileEntity(pos) instanceof TileCristallForge){
+            if(((TileCristallForge) world.getTileEntity(pos)).isForging()){
+
+                float f1 = (float)pos.getX() + 0.6F;
+                float f2 = (float)pos.getY() + 0.1F;
+                float f3 = (float)pos.getZ() + 0.6F;
+                float f4 = rand.nextFloat() * 0.3F -0.3F;
+                float f5 = rand.nextFloat() * 0.3F -0.3F;
+                float f6 = (float)pos.getY() + 0.2F;
+                float f7 = (float)pos.getY() + 0.3F;
+                float f8 = (float)pos.getY() + 0.4F;
+                float f9 = (float)pos.getY() + 0.5F;
+                float f10 = (float)pos.getY() + 0.6F;
+                float f11 = (float)pos.getX() + 0.6F;
+                float f12 = (float)pos.getZ() + 0.6F;
+
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f2, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f6, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f7, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f8, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f9, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f10, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f6, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f7, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f8, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f9, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f10, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f2, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f6, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f7, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f8, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f9, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f10, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f2, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
 
 
+            }
+
+        }
+
+    }
+
+    @Override
+    public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand) {
+        float f1 = (float)pos.getX() + 0.9F;
+        float f2 = (float)pos.getY() + 0.1F;
+        float f3 = (float)pos.getZ() + 0.8F;
+        float f4 = rand.nextFloat() * 0.3F -0.3F;
+        float f5 = rand.nextFloat() * 0.3F -0.3F;
+        float f6 = (float)pos.getY() + 0.2F;
+        float f7 = (float)pos.getY() + 0.3F;
+        float f8 = (float)pos.getY() + 0.4F;
+        float f9 = (float)pos.getY() + 0.5F;
+        float f10 = (float)pos.getY() + 0.6F;
+        float f11 = (float)pos.getX() + 0.9F;
+        float f12 = (float)pos.getZ() + 0.8F;
+
+        //world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f2, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f6, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f7, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f8, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f9, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f10, (double)(f3+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f6, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f7, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f8, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f9, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f10, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        //world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f11+f4), (double)f2, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f6, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f7, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f8, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f9, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f10, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+        world.spawnParticle(EnumParticleTypes.SUSPENDED_DEPTH, (double)(f1+f4), (double)f2, (double)(f12+f5), 0.0D, 0.0D, 0.0D);
+
+
+
+
+
+    }
 }
